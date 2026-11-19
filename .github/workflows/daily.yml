@@ -1,0 +1,56 @@
+name: Daily auction digest
+
+on:
+  schedule:
+    - cron: "0 14 * * *"   # 14:00 UTC = 6 AM Pacific (7 AM during daylight time)
+  workflow_dispatch: {}      # lets you run it any time from the Actions tab
+
+permissions:
+  contents: write            # to commit data/ and docs/ back to the repo
+
+concurrency:
+  group: digest
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Tests
+        run: python -m pytest -q
+
+      - name: Scrape and build digest
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          DIGEST_TO: ${{ secrets.DIGEST_TO }}
+        run: python -m tracker
+
+      - name: Upload digest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: digest
+          path: docs/index.html
+          if-no-files-found: ignore
+
+      - name: Commit results
+        run: |
+          git config user.name "auction-tracker-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data docs
+          git diff --cached --quiet || git commit -m "Digest $(date -u +%Y-%m-%d)"
+          git push

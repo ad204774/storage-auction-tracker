@@ -1,0 +1,20 @@
+# Storage auction tracker settings
+
+home_zip = "98024"        # Fall City, WA
+radius_miles = 50
+
+# Units whose contents mention any of these get a highlight tag in the digest.
+keywords = [
+  "tools", "tool box", "toolbox", "compressor", "generator",
+  "furniture", "dresser", "appliance", "refrigerator", "washer", "dryer",
+  "electronics", "tv", "computer", "gaming", "collectible", "antique",
+  "jewelry", "bike", "motorcycle", "kayak", "fishing", "camping",
+]
+
+[sources.storagetreasures]
+enabled = true
+state = "wa"
+
+[sources.bid13]
+enabled = true
+state = "washington"

@@ -1,0 +1,4 @@
+playwright==1.65.2
+beautifulsoup4==4.15.0
+zipcodes==3.0.1
+pytest
