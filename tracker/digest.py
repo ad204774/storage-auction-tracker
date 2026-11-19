@@ -53,7 +53,8 @@ def _table(rows: list[Auction], new_keys: set[str], limit: int | None = None) ->
         for h in ["Ends (Pacific)", "Dist", "Facility", "Size", "Contents", "Bid"]
     )
     body = "".join(_row(a, new_keys) for a in rows)
-    return f'<table style="border-collapse:collapse;width:100%;font-size:14px"><tr>{head}</tr>{body}</table>{more}'
+    return (f'<div style="overflow-x:auto"><table style="border-collapse:collapse;width:100%;font-size:14px;min-width:640px">'
+            f'<tr>{head}</tr>{body}</table></div>{more}')
 
 
 def render(nearby: list[Auction], new: list[Auction], cfg: dict, errors: list[str],
