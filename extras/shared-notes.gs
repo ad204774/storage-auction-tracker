@@ -55,6 +55,16 @@ function doGet(e) {
 function doPost(e) {
   const b = JSON.parse(e.postData.contents);
   if (b.key !== TEAM_CODE) return out_({ok: false});
+  if (b.action === "send") {  // the site's Send button: email this auction to the other person
+    const to = Object.keys(ALERTS).filter(n => n !== b.by).map(n => ALERTS[n]).join(",");
+    const s = b.snap || {};
+    if (to) MailApp.sendEmail({
+      to: to,
+      subject: `${b.by} sent you an auction: ${s.fac || "storage auction"}`,
+      body: `${b.by} thinks you should look at this one${b.note ? ":\n\n" + b.note : "."}\n\n${s.fac || ""}, ${s.city || ""} · ${s.size || ""} · bid $${s.bid == null ? "?" : s.bid}\n${s.txt || ""}\n\n${s.url || ""}\n\nAll watched auctions: ${SITE}/#w=1`,
+    });
+    return out_({ok: true, sent: !!to});
+  }
   const lock = LockService.getScriptLock();
   lock.waitLock(10000);
   let oldNote = "";
