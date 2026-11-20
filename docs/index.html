@@ -310,7 +310,9 @@ function setup() {
 
   const upd = new Date(D.updated).toLocaleString("en-US", {weekday: "long", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Los_Angeles"});
   $("sub").textContent = `Updated ${upd}. Refreshes every morning. Sources: StorageTreasures and Bid13.`;
-  if (D.errors.length) $("warn").innerHTML = `<div class="warn"><b>Heads up:</b> some sites didn't load on the last update, so the list may be incomplete. (${D.errors.map(esc).join("; ")})</div>`;
+  const w = (D.watched || []).filter(x => x.count > 0);
+  if (w.length) $("warn").innerHTML += `<div class="warn" style="background:var(--tag);color:var(--tag-ink)"><b>Also worth a look:</b> ${w.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}: ${x.count} in WA</a>`).join(" · ")} (not in the list below yet)</div>`;
+  if (D.errors.length) $("warn").innerHTML += `<div class="warn"><b>Heads up:</b> some sites didn't load on the last update, so the list may be incomplete. (${D.errors.map(esc).join("; ")})</div>`;
 
   let t;
   $("search").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 200); });
