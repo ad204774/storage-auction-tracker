@@ -475,7 +475,7 @@ function render(force) {
     const note = n.note
       ? `<div class="note" data-note="${esc(a.id)}" title="Click to edit">${highlight(n.note, groups)}<span class="who">${n.by ? esc(n.by) + " · " : ""}${n.at ? ago(n.at) : ""}</span></div>`
       : `<button class="addnote" data-note="${esc(a.id)}">📝 Add note</button>`;
-    const send = `<button class="send" data-send="${esc(a.id)}" title="Text or email this auction (and your note) to Chad">📤 Send</button>`;
+    const send = `<button class="send" data-send="${esc(a.id)}" title="Text or email this auction (and your note) to anyone">📤 Send</button>`;
     const skip = `<button class="skip${n.skip ? " on" : ""}" data-skip="${esc(a.id)}" title="${n.skip ? "Bring this auction back" : "Nothing here for us: hide it"}">${n.skip ? "Skipped" : "✕ Skip"}</button>`;
     return `<tr class="${closing ? "closing" : ""}${ended ? " ended" : ""}${n.skip ? " skipped" : ""}">
       <td class="ph">${photoCell}${star}</td>
