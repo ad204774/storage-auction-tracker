@@ -12,9 +12,9 @@
  */
 const TEAM_CODE = "change-me";
 const ALERTS = {
-  // name typed on the site -> email of the OTHER person to alert
-  // "Chucky": "chad@example.com",
-  // "Gimp": "andrew@example.com",
+  // each person's name on the site -> THEIR OWN email; a note emails everyone else
+  // "Chucky": "chucky@example.com",
+  // "Gimp": "gimp@example.com",
 };
 const SITE = "https://lineandlocker.com";
 
@@ -70,7 +70,7 @@ function doPost(e) {
   } finally {
     lock.releaseLock();
   }
-  const to = ALERTS[b.by];
+  const to = Object.keys(ALERTS).filter(n => n !== b.by).map(n => ALERTS[n]).join(",");
   if (to && b.note && b.note !== oldNote) {
     const s = b.snap || {};
     MailApp.sendEmail({
