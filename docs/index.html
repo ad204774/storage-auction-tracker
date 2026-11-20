@@ -63,6 +63,18 @@ td.fac{max-width:240px}
 .badge{display:inline-block;border-radius:4px;padding:0 5px;font-size:11px;font-weight:700;margin-right:4px;vertical-align:1px}
 .badge.new{background:var(--new);color:#fff}
 .badge.tag{background:var(--tag);color:var(--tag-ink);font-weight:600}
+.star{background:none;border:0;padding:0 2px;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;vertical-align:-3px}
+.star.on{color:var(--amber)}
+.ph .star{display:block;margin:4px auto 0}
+.note{margin-top:6px;background:var(--tag);color:var(--ink);border-radius:6px;padding:5px 8px;font-size:13px;white-space:pre-wrap;cursor:text}
+.note .who{color:var(--muted);font-size:11px;display:block;margin-top:2px}
+.addnote{background:none;border:0;padding:0;margin-top:4px;color:var(--accent);font-size:12px;cursor:pointer}
+.noteedit textarea{width:100%;min-height:60px;font:inherit;font-size:13px;margin-top:6px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px}
+.noteedit .btns{display:flex;gap:6px;margin-top:4px}
+.noteedit button{padding:4px 10px;font-size:12px}
+tr.ended td{opacity:.6}
+#teambar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+#teambar input{padding:4px 8px;font-size:13px;width:110px}
 .soon{color:#d1242f;font-weight:600}
 mark{background:#ffe08a;color:#000;border-radius:2px}
 .more{text-align:center;margin:14px}
@@ -128,6 +140,7 @@ td.sz{white-space:nowrap}
       </label>
       <label class="chk"><input type="checkbox" id="newonly"> New (last 24 hrs)</label>
       <label class="chk"><input type="checkbox" id="photoonly"> Has photo</label>
+      <label class="chk"><input type="checkbox" id="watchonly"> <span style="color:var(--amber)">★</span> Watching</label>
       <button id="reset">Reset</button>
     </div>
     <div class="chips" id="chips"></div>
@@ -136,12 +149,13 @@ td.sz{white-space:nowrap}
 
   <div class="summary">
     <span id="count"></span>
+    <span id="teambar"></span>
     <span class="fresh"><span id="asof"></span> <button id="refresh" type="button" title="Load the latest bids">↻ Refresh bids</button></span>
     <label class="chk" id="sortm">Sort
       <select id="sortsel">
         <option value="end:1">Ending soonest</option><option value="dist:1">Closest</option>
         <option value="bid:1">Lowest bid</option><option value="bid:-1">Highest bid</option>
-        <option value="sqft:-1">Largest unit</option><option value="new:-1">Newest first</option>
+        <option value="sqft:-1">Largest unit</option><option value="new:-1">Newest first</option><option value="watch:-1">Watching first</option>
       </select>
     </label>
   </div>
@@ -210,6 +224,51 @@ function highlight(s, groups) {
   return out;
 }
 
+// Stars and notes. Saved in this browser; also shared through a Google Sheet when notes_url is set.
+const LS = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+};
+const NOTES = {
+  data: LS.get("ll_notes", {}),
+  status: "",
+  get(id) { return this.data[id] || {}; },
+  team() { return D.notes_url && LS.get("ll_team", "") ? {key: LS.get("ll_team", ""), name: LS.get("ll_name", "")} : null; },
+  async load() {
+    const t = this.team(); if (!t) return;
+    try {
+      const r = await fetch(D.notes_url + "?key=" + encodeURIComponent(t.key), {cache: "no-store"}).then(r => r.json());
+      if (r.ok) { this.data = r.notes || {}; LS.set("ll_notes", this.data); this.status = ""; }
+      else this.status = "That team code didn't work.";
+    } catch (e) { this.status = "Couldn't reach the shared notes; showing this device's copy."; }
+  },
+  save(a, patch) {
+    const t = this.team();
+    const cur = {...this.get(a.id), ...patch, by: t ? t.name : "", at: new Date().toISOString()};
+    cur.snap = {fac: a.fac, city: a.city, url: a.url, end: a.end, img: a.img, big: a.big, txt: a.txt, size: a.size, bid: a.bid, src: a.src, lat: a.lat, lon: a.lon};
+    if (!cur.star && !cur.note) delete this.data[a.id]; else this.data[a.id] = cur;
+    LS.set("ll_notes", this.data);
+    if (t) fetch(D.notes_url, {method: "POST", headers: {"Content-Type": "text/plain;charset=utf-8"},
+      body: JSON.stringify({key: t.key, id: a.id, star: !!cur.star, note: cur.note || "", by: cur.by, snap: cur.snap})})
+      .catch(() => { this.status = "Saved on this device, but couldn't reach the shared notes."; teambar(); });
+  },
+};
+function ago(iso) {
+  const m = Math.round((Date.now() - Date.parse(iso)) / 6e4);
+  return m < 1 ? "just now" : m < 60 ? m + " min ago" : m < 1440 ? Math.round(m / 60) + " hr ago" : Math.round(m / 1440) + " days ago";
+}
+function teambar() {
+  const el = $("teambar");
+  if (!D.notes_url) { el.innerHTML = `<span title="Stars and notes are saved in this browser">★ and notes saved on this device</span>`; return; }
+  const t = NOTES.team();
+  if (!t) {
+    el.innerHTML = `Share stars &amp; notes: <input id="tcode" placeholder="Team code" autocomplete="off"> <input id="tname" placeholder="Your name"> <button id="tjoin">Join</button>`;
+  } else {
+    el.innerHTML = `<span>★ Shared notes as <b>${esc(t.name || "?")}</b></span> <button id="tleave" class="addnote">change</button>`;
+  }
+  if (NOTES.status) el.innerHTML += ` <span class="soon">${esc(NOTES.status)}</span>`;
+}
+
 function fmtEnd(iso) {
   if (!iso) return "?";
   const d = new Date(iso);
@@ -233,6 +292,7 @@ function readState() {
   $("src").value = p.get("src") || "";
   $("newonly").checked = p.get("new") === "1";
   $("photoonly").checked = p.get("ph") === "1";
+  $("watchonly").checked = p.get("w") === "1";
   tags = new Set((p.get("t") || "").split(",").filter(Boolean));
   if (p.get("sort")) { const [k, d] = p.get("sort").split(":"); sortKey = k; sortDir = +d || 1; }
   const c = p.get("c");
@@ -249,22 +309,28 @@ function writeState() {
   set("e", $("ends").value); set("s", $("size").value); set("b", $("maxbid").value); set("src", $("src").value);
   if ($("newonly").checked) p.set("new", "1");
   if ($("photoonly").checked) p.set("ph", "1");
+  if ($("watchonly").checked) p.set("w", "1");
   if (tags.size) p.set("t", [...tags].join(","));
   if (!(sortKey === "end" && sortDir === 1)) p.set("sort", sortKey + ":" + sortDir);
   history.replaceState(null, "", p.toString() ? "#" + p : location.pathname);
 }
 
-function render() {
+function render(force) {
+  if (!force && document.querySelector(".noteedit")) return;  // don't wipe a note being typed
   const now = Date.now();
+  const watchonly = $("watchonly").checked;
   const groups = parseQuery($("search").value.trim());
   const r = +$("radius").value, ends = +$("ends").value, size = $("size").value;
   const maxbid = $("maxbid").value === "" ? null : +$("maxbid").value;
   const src = $("src").value, newonly = $("newonly").checked, photo = $("photoonly").checked;
 
   let list = [];
+  const liveIds = new Set();
   for (const a of D.auctions) {
-    if (a.end && new Date(a.end) <= now) continue;
+    liveIds.add(a.id);
+    if (a.end && new Date(a.end) <= now && !(watchonly && NOTES.get(a.id).star)) continue;
     a.dist = miles(center.lat, center.lon, a.lat, a.lon);
+    if (watchonly) { if (NOTES.get(a.id).star && (!groups.length || matches(groups, [a.txt, a.fac, a.city, a.size, NOTES.get(a.id).note].join(" ").toLowerCase()))) list.push(a); continue; }
     if (a.dist > r) continue;
     if (src && a.src !== src) continue;
     if (newonly && !a.new) continue;
@@ -276,11 +342,21 @@ function render() {
     if (size === "m" && !(a.sqft && a.sqft > 50 && a.sqft <= 150)) continue;
     if (size === "l" && !(a.sqft && a.sqft > 150)) continue;
     if (tags.size && ![...tags].some(t => a.tags.includes(t))) continue;
-    if (groups.length && !matches(groups, [a.txt, a.fac, a.city, a.size].join(" ").toLowerCase())) continue;
+    if (groups.length && !matches(groups, [a.txt, a.fac, a.city, a.size, NOTES.get(a.id).note].join(" ").toLowerCase())) continue;
     list.push(a);
   }
+  if (watchonly) {
+    for (const [id, n] of Object.entries(NOTES.data)) {
+      if (!n.star || liveIds.has(id) || !n.snap) continue;
+      const a = {...n.snap, id, tags: [], new: false, ended: true};
+      a.dist = miles(center.lat, center.lon, a.lat, a.lon);
+      if (!groups.length || matches(groups, [a.txt, a.fac, a.city, a.size, n.note].join(" ").toLowerCase())) list.push(a);
+    }
+  }
+  render.byId = new Map(list.map(a => [a.id, a]));
   const val = a => sortKey === "end" ? (a.end ? Date.parse(a.end) : Infinity)
     : sortKey === "new" ? (a.new ? 1 : 0)
+    : sortKey === "watch" ? (NOTES.get(a.id).star ? 1 : 0)
     : sortKey === "fac" || sortKey === "txt" ? String(a[sortKey] || "").toLowerCase()
     : (a[sortKey] ?? (sortDir > 0 ? Infinity : -Infinity));
   list.sort((x, y) => { const a = val(x), b = val(y); return (a < b ? -1 : a > b ? 1 : 0) * sortDir || x.dist - y.dist; });
@@ -293,21 +369,28 @@ function render() {
   $("sortsel").value = sortKey + ":" + sortDir;
 
   const nNew = list.filter(a => a.new).length;
-  $("count").textContent = `${list.length.toLocaleString()} auctions within ${r} mi of ${center.n}` + (nNew ? ` · ${nNew} new in the last 24 hrs` : "");
+  $("count").textContent = watchonly ? `${list.length.toLocaleString()} watched auction${list.length === 1 ? "" : "s"} (any distance)`
+    : `${list.length.toLocaleString()} auctions within ${r} mi of ${center.n}` + (nNew ? ` · ${nNew} new in the last 24 hrs` : "");
   const html = list.slice(0, shown).map(a => {
     const soon = a.end && new Date(a.end) - now < 6 * 36e5;
     const badges = (a.new ? '<span class="badge new">NEW</span>' : "") + a.tags.map(t => `<span class="badge tag">${esc(t)}</span>`).join("");
     const photoCell = a.img
       ? `<img class="thumb" loading="lazy" src="${esc(a.img)}" data-big="${esc(a.big || a.img)}" data-i="${esc(a.id)}" alt="Unit photo">`
       : `<a class="nophoto" href="${esc(a.url)}" target="_blank" rel="noopener">See listing</a>`;
-    const closing = a.end && new Date(a.end) - now < 36e5;
-    return `<tr class="${closing ? "closing" : ""}">
-      <td class="ph">${photoCell}</td>
+    const ended = a.ended || (a.end && new Date(a.end) <= now);
+    const closing = !ended && a.end && new Date(a.end) - now < 36e5;
+    const n = NOTES.get(a.id);
+    const star = `<button class="star${n.star ? " on" : ""}" data-star="${esc(a.id)}" title="${n.star ? "Stop watching" : "Watch this auction"}" aria-label="Watch">${n.star ? "★" : "☆"}</button>`;
+    const note = n.note
+      ? `<div class="note" data-note="${esc(a.id)}" title="Click to edit">${highlight(n.note, groups)}<span class="who">${n.by ? esc(n.by) + " · " : ""}${n.at ? ago(n.at) : ""}</span></div>`
+      : `<button class="addnote" data-note="${esc(a.id)}">📝 Add note</button>`;
+    return `<tr class="${closing ? "closing" : ""}${ended ? " ended" : ""}">
+      <td class="ph">${photoCell}${star}</td>
       <td class="when" data-l="Ends"><a class="${soon ? "soon" : ""}" href="${esc(a.url)}" target="_blank" rel="noopener" title="Open this auction">${esc(fmtEnd(a.end))}</a><div class="meta">${a.end ? left(a.end) : ""}</div></td>
-      <td class="num" data-l="Distance">${a.dist.toFixed(0)} mi</td>
+      <td class="num" data-l="Distance">${isFinite(a.dist) ? a.dist.toFixed(0) + " mi" : ""}</td>
       <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.fac)}: open this auction">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
       <td class="sz" data-l="Size">${esc(a.size || "")}</td>
-      <td>${badges}${highlight(a.txt || "", groups)}</td>
+      <td>${ended ? '<span class="badge" style="background:var(--muted);color:#fff">ENDED</span>' : ""}${badges}${highlight(a.txt || "", groups)}<div class="notecell">${note}</div></td>
       <td class="num" data-l="Bid">${a.bid != null ? "$" + a.bid.toLocaleString() : ""}</td>
     </tr>`;
   }).join("");
@@ -330,7 +413,7 @@ async function refreshData(manual) {
   try {
     const d = await fetch("auctions.json?t=" + Date.now(), {cache: "no-store"}).then(r => r.json());
     const changed = d.updated !== D.updated;
-    D = d; render(); asOf();
+    D = d; await NOTES.load(); teambar(); render(); asOf();
     if (manual) btn.textContent = changed ? "✓ Updated" : "✓ Already latest";
   } catch (e) {
     if (manual) btn.textContent = "Couldn't refresh";
@@ -354,7 +437,7 @@ function setup() {
 
   let t;
   $("search").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 200); });
-  ["radius", "ends", "size", "src", "newonly", "photoonly"].forEach(id => $(id).addEventListener("change", rerender));
+  ["radius", "ends", "size", "src", "newonly", "photoonly", "watchonly"].forEach(id => $(id).addEventListener("change", rerender));
   $("maxbid").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 300); });
   $("center").addEventListener("change", () => {
     const v = $("center").value.trim().toLowerCase();
@@ -390,6 +473,31 @@ function setup() {
     lb.querySelector(".cap").innerHTML = `<b>${esc(a.fac)}</b>, ${esc(a.city)} · ${esc(a.size || "")}<br>${esc(a.txt || "")}<br><a href="${esc(a.url)}" target="_blank" rel="noopener">Open the listing on ${SITE[a.src] || a.src} →</a>`;
     lb.classList.add("open");
   });
+  // Stars and notes
+  $("rows").addEventListener("click", e => {
+    const s = e.target.closest("[data-star]");
+    if (s) { const a = render.byId.get(s.dataset.star); NOTES.save(a, {star: !NOTES.get(a.id).star}); render(true); return; }
+    const nb = e.target.closest("[data-note]");
+    if (nb && !document.querySelector(".noteedit")) {
+      const id = nb.dataset.note, cell = nb.closest(".notecell");
+      cell.innerHTML = `<div class="noteedit"><textarea placeholder="What you saw, what it's worth, max bid…">${esc(NOTES.get(id).note || "")}</textarea><div class="btns"><button class="primary" data-save="${esc(id)}">Save</button><button data-cancel>Cancel</button></div></div>`;
+      cell.querySelector("textarea").focus();
+      return;
+    }
+    const sv = e.target.closest("[data-save]");
+    if (sv) { const a = render.byId.get(sv.dataset.save); NOTES.save(a, {note: sv.closest(".noteedit").querySelector("textarea").value.trim()}); render(true); return; }
+    if (e.target.closest("[data-cancel]")) render(true);
+  });
+  $("teambar").addEventListener("click", async e => {
+    if (e.target.id === "tjoin") {
+      const code = $("tcode").value.trim(), name = $("tname").value.trim();
+      if (!code || !name) return;
+      LS.set("ll_team", code); LS.set("ll_name", name);
+      await NOTES.load(); if (NOTES.status) LS.set("ll_team", "");
+      teambar(); render(true);
+    } else if (e.target.id === "tleave") { LS.set("ll_team", ""); NOTES.status = ""; teambar(); }
+  });
+
   const close = () => lb.classList.remove("open");
   lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("x")) close(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
@@ -398,7 +506,9 @@ function setup() {
   setInterval(() => refreshData(false), 10 * 60 * 1000);  // quietly pick up the hourly update
   setInterval(() => { asOf(); render(); }, 60 * 1000);  // countdowns + red rows update every minute
   asOf();
+  teambar();
   render();
+  NOTES.load().then(() => { teambar(); render(); });
 }
 
 Promise.all([
