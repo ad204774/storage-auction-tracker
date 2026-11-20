@@ -87,6 +87,11 @@ mark{background:#ffe08a;color:#000;border-radius:2px}
 #lb .cap{color:#fff;margin-top:10px;text-align:center;max-width:800px}
 #lb a{color:#9cc2ff}
 #lb .x{position:absolute;top:10px;right:14px;color:#fff;font-size:30px;background:none;border:0}
+#lb .nav{position:absolute;top:40%;background:rgba(0,0,0,.5);color:#fff;border:0;border-radius:50%;width:52px;height:52px;font-size:30px;line-height:1;cursor:pointer}
+#lb .nav:hover{background:rgba(0,0,0,.8)}
+#lb .prev{left:12px}#lb .next{right:12px}
+#lb .num{color:#ddd;font-size:13px;margin-top:6px}
+.pics{position:absolute;margin:-22px 0 0 4px;background:rgba(0,0,0,.65);color:#fff;font-size:11px;border-radius:4px;padding:0 4px;pointer-events:none}
 @media (max-width:760px){
   table,thead,tbody,tr,td{display:block}
   thead{display:none}
@@ -181,7 +186,10 @@ td.sz{white-space:nowrap}
 
 <div id="lb" role="dialog" aria-modal="true">
   <button class="x" aria-label="Close">×</button>
+  <button class="nav prev" aria-label="Previous photo">‹</button>
   <img alt="">
+  <button class="nav next" aria-label="Next photo">›</button>
+  <div class="num"></div>
   <div class="cap"></div>
 </div>
 
@@ -378,7 +386,7 @@ function render(force) {
     const soon = a.end && new Date(a.end) - now < 6 * 36e5;
     const badges = (a.new ? '<span class="badge new">NEW</span>' : "") + a.tags.map(t => `<span class="badge tag">${esc(t)}</span>`).join("");
     const photoCell = a.img
-      ? `<img class="thumb" loading="lazy" src="${esc(a.img)}" data-big="${esc(a.big || a.img)}" data-i="${esc(a.id)}" alt="Unit photo">`
+      ? `<img class="thumb" loading="lazy" src="${esc(a.img)}" data-big="${esc(a.big || a.img)}" data-i="${esc(a.id)}" alt="Unit photo">${(a.pics || []).length > 1 ? `<div class="pics">📷 ${a.pics.length}</div>` : ""}`
       : `<a class="nophoto" href="${esc(a.url)}" target="_blank" rel="noopener">See listing</a>`;
     const ended = a.ended || (a.end && new Date(a.end) <= now);
     const closing = !ended && a.end && new Date(a.end) - now < 36e5;
@@ -403,6 +411,16 @@ function render(force) {
   $("more").textContent = `Show more (${(list.length - shown).toLocaleString()} left)`;
   render.list = list;
   writeState();
+}
+
+let lbPics = [], lbAt = 0, lbThumb = "";
+function showPic() {
+  const lb = $("lb"), im = lb.querySelector("img"), n = lbPics.length;
+  lbAt = (lbAt + n) % n;
+  im.onerror = function () { this.onerror = null; if (lbAt === 0) this.src = lbThumb; };
+  im.src = lbPics[lbAt];
+  lb.querySelectorAll(".nav").forEach(b => b.hidden = n < 2);
+  lb.querySelector(".num").textContent = n > 1 ? `Photo ${lbAt + 1} of ${n}` : "";
 }
 
 function rerender() { shown = PAGE; render(); }
@@ -472,8 +490,8 @@ function setup() {
   $("rows").addEventListener("click", e => {
     const img = e.target.closest("img.thumb"); if (!img) return;
     const a = D.auctions.find(x => x.id === img.dataset.i);
-    lb.querySelector("img").src = img.dataset.big;
-    lb.querySelector("img").onerror = function () { this.onerror = null; this.src = img.src; };
+    lbPics = (a.pics && a.pics.length) ? a.pics : [img.dataset.big];
+    lbThumb = img.src; lbAt = 0; showPic();
     lb.querySelector(".cap").innerHTML = `<b>${esc(a.fac)}</b>, ${esc(a.city)} · ${esc(a.size || "")}<br>${esc(a.txt || "")}<br><a href="${esc(a.url)}" target="_blank" rel="noopener">Open the listing on ${SITE[a.src] || a.src} →</a>`;
     lb.classList.add("open");
   });
@@ -517,8 +535,24 @@ function setup() {
   });
 
   const close = () => lb.classList.remove("open");
-  lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("x")) close(); });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  lb.addEventListener("click", e => {
+    if (e.target.classList.contains("prev")) { lbAt--; showPic(); return; }
+    if (e.target.classList.contains("next")) { lbAt++; showPic(); return; }
+    if (e.target === lb || e.target.classList.contains("x")) close();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") close();
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "ArrowLeft") { lbAt--; showPic(); }
+    if (e.key === "ArrowRight") { lbAt++; showPic(); }
+  });
+  let tx = null;  // swipe on phones
+  lb.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, {passive: true});
+  lb.addEventListener("touchend", e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 40) { lbAt += dx < 0 ? 1 : -1; showPic(); }
+  });
 
   $("refresh").addEventListener("click", () => refreshData(true));
   setInterval(() => refreshData(false), 10 * 60 * 1000);  // quietly pick up the hourly update

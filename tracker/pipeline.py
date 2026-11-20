@@ -58,6 +58,8 @@ class Store:
             prev = self.seen.get(a.key)
             if prev:
                 a.first_seen = prev["first_seen"]
+                if not a.photos:
+                    a.photos = prev.get("photos") or []
             else:
                 a.first_seen = now.isoformat(timespec="minutes")
                 new.append(a)

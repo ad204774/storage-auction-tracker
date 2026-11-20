@@ -93,3 +93,13 @@ def test_watch_count():
     from tracker.sources.watch import WATCHED, count, count_wa
     assert count_wa("Live Auctions in Washington\nTotal Auctions: 20\nAustin, TX\nKent, WA\nTacoma, WA 98402\n") == 2
     assert count("Showing  1-10 of 1,234 active auctions near washington", WATCHED[1]["pattern"]) == 1234
+
+
+def test_storagetreasures_photos():
+    from tracker.sources import storagetreasures
+    base = "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/8/9/5/2/"
+    html = ('<div class="image-gallery-container">'
+            + "".join(f'<img src="{base}{i}/giant.jpg">' for i in (5, 6, 7))
+            + f'</div><div class="image-gallery-thumbnail-inner"><img class="image-gallery-thumbnail-image" src="{base}5/giant.jpg"></div>'
+            + f'<div class="related"><img src="{base}9/thumb.jpg"></div>')
+    assert storagetreasures.parse_photos(html) == [f"{base}{i}/giant.jpg" for i in (5, 6, 7)]

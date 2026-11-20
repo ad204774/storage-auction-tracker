@@ -21,6 +21,29 @@ USER_AGENT = (
 )
 
 
+def _add_photos(page, collected, cfg) -> None:
+    if page is None:
+        return
+    import time
+    store = Store(ROOT / "data" / "seen.json")
+    for a in collected:
+        prev = store.seen.get(a.key)
+        if prev and prev.get("photos"):
+            a.photos = prev["photos"]
+    todo = [a for a in collected if a.source == "storagetreasures" and not a.photos and a.ends_at]
+    todo.sort(key=lambda a: a.ends_at)
+    limit = int(cfg.get("photo_pages_per_run", 60))
+    got = 0
+    for a in todo[:limit]:
+        try:
+            a.photos = storagetreasures.fetch_photos(page, a.url) or ([a.image_url.replace("/thumb.jpg", "/giant.jpg")] if a.image_url else ["none"])
+            got += 1
+        except Exception as e:
+            print(f"photos: {a.url}: {type(e).__name__}")
+        time.sleep(2)
+    print(f"photos: fetched {got} auction pages, {max(0, len(todo) - limit)} still to do")
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default=str(ROOT / "config.toml"))
@@ -58,6 +81,12 @@ def main(argv: list[str] | None = None) -> int:
                 traceback.print_exc()
                 errors.append(f"{name}: {type(e).__name__}: {str(e).splitlines()[0][:200]}")
         watched = watch.check(page)
+        photo_page = page
+        if not sources.get("storagetreasures", {}).get("enabled", True):
+            photo_page = None
+        # Photos need one visit per auction page, so do a limited batch each run (closest-ending first)
+        # and remember them in data/seen.json.
+        _add_photos(photo_page, collected, cfg)
         browser.close()
 
     auctions = dedupe(collected)

@@ -95,6 +95,28 @@ def dismiss_cookie_banner(page) -> None:
     page.evaluate("document.getElementById('onetrust-consent-sdk')?.remove()")
 
 
+def parse_photos(html: str) -> list[str]:
+    """All gallery photos on one auction's page (largest size), in order."""
+    soup = BeautifulSoup(html, "html.parser")
+    out = []
+    for img in soup.select(".image-gallery-thumbnail-image, .image-gallery-container img"):
+        src = img.get("src") or ""
+        if "/data/auctions/images/" in src:
+            src = re.sub(r"/(thumb|large)\.jpg$", "/giant.jpg", src)
+            if src not in out:
+                out.append(src)
+    return out
+
+
+def fetch_photos(page, url: str) -> list[str]:
+    page.goto(url, wait_until="domcontentloaded", timeout=45_000)
+    try:
+        page.wait_for_selector(".image-gallery-thumbnail-image, .image-gallery-container img", timeout=15_000)
+    except Exception:
+        return []
+    return parse_photos(page.content())
+
+
 def fetch(page, state: str = "wa", max_pages: int = 30, delay_ms: int = 3_000) -> list[Auction]:
     """`page` is a Playwright page. Walks every result page for the state."""
     page.goto(f"{BASE}/auctions/{state}", wait_until="domcontentloaded", timeout=60_000)

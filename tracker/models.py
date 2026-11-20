@@ -27,6 +27,7 @@ class Auction:
     distance_mi: float | None = None
     first_seen: str | None = None
     tags: list[str] = field(default_factory=list)
+    photos: list[str] = field(default_factory=list)  # all photo URLs, from the auction's own page
 
     @property
     def key(self) -> str:
