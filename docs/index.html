@@ -396,7 +396,7 @@ function setup() {
 
   $("refresh").addEventListener("click", () => refreshData(true));
   setInterval(() => refreshData(false), 10 * 60 * 1000);  // quietly pick up the hourly update
-  setInterval(asOf, 60 * 1000);
+  setInterval(() => { asOf(); render(); }, 60 * 1000);  // countdowns + red rows update every minute
   asOf();
   render();
 }
