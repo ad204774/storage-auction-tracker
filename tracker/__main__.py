@@ -49,9 +49,13 @@ def main(argv: list[str] | None = None) -> int:
                 got = fn(page, state=sc.get("state"))
                 print(f"{name}: {len(got)} auctions statewide")
                 collected += got
+            except storagetreasures.PartialResults as e:
+                print(f"{name}: partial, {len(e.auctions)} auctions ({e})")
+                collected += e.auctions
+                errors.append(f"{name}: only partly loaded ({str(e)[:200]})")
             except Exception as e:  # keep going if one site breaks
                 traceback.print_exc()
-                errors.append(f"{name}: {type(e).__name__}: {e}")
+                errors.append(f"{name}: {type(e).__name__}: {str(e).splitlines()[0][:200]}")
         browser.close()
 
     auctions = dedupe(collected)

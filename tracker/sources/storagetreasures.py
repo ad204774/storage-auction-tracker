@@ -81,15 +81,31 @@ def parse(html: str, now: datetime | None = None) -> list[Auction]:
     return out
 
 
+def dismiss_cookie_banner(page) -> None:
+    """Decline optional cookies on the OneTrust banner, then remove any leftover overlay."""
+    for sel in ("#onetrust-reject-all-handler", "button.ot-pc-refuse-all-handler"):
+        btn = page.locator(sel)
+        try:
+            if btn.count() and btn.first.is_visible():
+                btn.first.click(timeout=5_000)
+                page.wait_for_timeout(1_000)
+                break
+        except Exception:
+            pass
+    page.evaluate("document.getElementById('onetrust-consent-sdk')?.remove()")
+
+
 def fetch(page, state: str = "wa", max_pages: int = 30, delay_ms: int = 3_000) -> list[Auction]:
     """`page` is a Playwright page. Walks every result page for the state."""
     page.goto(f"{BASE}/auctions/{state}", wait_until="domcontentloaded", timeout=60_000)
     page.wait_for_selector("a.auction-tile", timeout=60_000)
 
+    dismiss_cookie_banner(page)
+
     # Show 100 per page so the whole state takes ~15 page loads instead of ~100.
     per_page = page.locator("select:has(option[value='100'])").last
     if per_page.count():
-        per_page.select_option("100")
+        per_page.select_option("100", timeout=10_000)
         page.wait_for_timeout(delay_ms)
 
     def go(button_id: str) -> bool:
@@ -98,7 +114,8 @@ def fetch(page, state: str = "wa", max_pages: int = 30, delay_ms: int = 3_000) -
         if not btn.count() or "disabled" in (btn.get_attribute("class") or ""):
             return False
         first = page.locator("a.auction-tile").first.get_attribute("href")
-        btn.click()
+        # Click from inside the page so a lingering overlay can't swallow the click.
+        btn.evaluate("el => (el.querySelector('.page-link') || el).click()")
         # Tiles briefly disappear while loading; wait until a different first tile shows.
         page.wait_for_function(
             "h => { const a = document.querySelector('a.auction-tile'); return a && a.getAttribute('href') !== h; }",
@@ -114,9 +131,23 @@ def fetch(page, state: str = "wa", max_pages: int = 30, delay_ms: int = 3_000) -
             break
 
     seen: dict[str, Auction] = {}
-    for _ in range(max_pages):
-        for a in parse(page.content()):
-            seen.setdefault(a.source_id, a)
-        if not go("#pagination-page-next"):
-            break
+    pages = 0
+    try:
+        for _ in range(max_pages):
+            for a in parse(page.content()):
+                seen.setdefault(a.source_id, a)
+            pages += 1
+            if not go("#pagination-page-next"):
+                break
+    except Exception as e:
+        if not seen:
+            raise
+        # Keep what we already collected, but make the problem visible in the digest.
+        raise PartialResults(list(seen.values()), f"stopped after page {pages}: {e}") from e
     return list(seen.values())
+
+
+class PartialResults(Exception):
+    def __init__(self, auctions: list[Auction], message: str):
+        super().__init__(message)
+        self.auctions = auctions
