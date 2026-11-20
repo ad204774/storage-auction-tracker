@@ -475,7 +475,7 @@ function render(force) {
     const note = n.note
       ? `<div class="note" data-note="${esc(a.id)}" title="Click to edit">${highlight(n.note, groups)}<span class="who">${n.by ? esc(n.by) + " · " : ""}${n.at ? ago(n.at) : ""}</span></div>`
       : `<button class="addnote" data-note="${esc(a.id)}">📝 Add note</button>`;
-    const send = `<button class="send" data-send="${esc(a.id)}" title="Text or email this auction (and your note) to anyone">📤 Send</button>`;
+    const send = `<button class="send" data-send="${esc(a.id)}" title="Share this auction and your note (phone: share menu; computer: copies it to paste anywhere)">📤 Send</button>`;
     const skip = `<button class="skip${n.skip ? " on" : ""}" data-skip="${esc(a.id)}" title="${n.skip ? "Bring this auction back" : "Nothing here for us: hide it"}">${n.skip ? "Skipped" : "✕ Skip"}</button>`;
     return `<tr class="${closing ? "closing" : ""}${ended ? " ended" : ""}${n.skip ? " skipped" : ""}">
       <td class="ph">${photoCell}${star}</td>
@@ -506,8 +506,8 @@ function showPic() {
 
 function toast(msg, undo) {
   const t = $("toast");
-  t.innerHTML = esc(msg) + '<button>Undo</button>';
-  t.querySelector("button").onclick = () => { t.style.display = "none"; undo(); };
+  t.innerHTML = esc(msg) + (undo ? '<button>Undo</button>' : "");
+  if (undo) t.querySelector("button").onclick = () => { t.style.display = "none"; undo(); };
   t.style.display = "block";
   clearTimeout(toast.t); toast.t = setTimeout(() => { t.style.display = "none"; }, 6000);
 }
@@ -606,8 +606,11 @@ function setup() {
     if (sd) {
       const a = render.byId.get(sd.dataset.send), n = NOTES.get(a.id);
       const text = `${a.fac}, ${a.city} · ${a.size || ""} · bid $${a.bid ?? "?"} · ends ${fmtEnd(a.end)}\n${a.txt || ""}` + (n.note ? `\n\nMy note: ${n.note}` : "");
-      if (navigator.share) navigator.share({title: "Storage auction: " + a.fac, text, url: a.url}).catch(() => {});
-      else location.href = "mailto:?subject=" + encodeURIComponent("Storage auction: " + a.fac) + "&body=" + encodeURIComponent(text + "\n\n" + a.url);
+      const phone = matchMedia("(pointer: coarse)").matches;
+      if (phone && navigator.share) navigator.share({title: "Storage auction: " + a.fac, text, url: a.url}).catch(() => {});
+      else navigator.clipboard.writeText(text + "\n\n" + a.url)
+        .then(() => toast("Copied! Paste it into a text, email or chat.", null))
+        .catch(() => { location.href = "mailto:?subject=" + encodeURIComponent("Storage auction: " + a.fac) + "&body=" + encodeURIComponent(text + "\n\n" + a.url); });
       return;
     }
     const sv = e.target.closest("[data-save]");
