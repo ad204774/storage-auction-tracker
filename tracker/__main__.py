@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timedelta, timezone
 import json
 import os
 import sys
@@ -73,14 +74,23 @@ def main(argv: list[str] | None = None) -> int:
     store.save()
     (ROOT / "data" / "latest.json").write_text(json.dumps([a.to_dict() for a in wide], indent=1))
 
-    site.build(Path(args.out), wide, new_wide, cfg, errors, watched=watched)
+    # Badge as NEW anything first seen in the last 24 hours (but not the very first run's backfill).
+    now = datetime.now(timezone.utc)
+    started = min((v["first_seen"] for v in store.seen.values() if v.get("first_seen")), default=None)
+    def recent(a):
+        if not a.first_seen:
+            return False
+        seen = datetime.fromisoformat(a.first_seen)
+        return now - seen < timedelta(hours=24) and (not started or seen - datetime.fromisoformat(started) > timedelta(hours=1))
+    site.build(Path(args.out), wide, [a for a in wide if recent(a)], cfg, errors, watched=watched)
 
     # The email sticks to the default home + radius.
     nearby = [a for a in wide if a.distance_mi <= cfg["radius_miles"]]
     new = [a for a in new_wide if a.distance_mi <= cfg["radius_miles"]]
     print(f"{len(wide)} within {max_r} mi; {len(nearby)} within {cfg['radius_miles']} mi, {len(new)} new. Site: {args.out}")
 
-    if not args.no_email:
+    # Hourly runs only refresh the site; the email goes out once, on the morning run.
+    if not args.no_email and os.getenv("DIGEST_SEND", "true") == "true":
         subject = f"Storage auctions: {len(new)} new near {cfg['home_zip']}"
         email_html = digest.render(nearby, new, cfg, errors, for_email=True)
         if digest.send_email(email_html, subject):

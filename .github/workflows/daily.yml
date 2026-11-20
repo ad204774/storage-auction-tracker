@@ -2,7 +2,8 @@ name: Daily auction digest
 
 on:
   schedule:
-    - cron: "0 14 * * *"   # 14:00 UTC = 6 AM Pacific (7 AM during daylight time)
+    - cron: "0 14 * * *"          # 6 AM Pacific (7 AM in daylight time): full update + email
+    - cron: "0 15-23,0-6 * * *"   # hourly until 10 PM Pacific: refresh bids on the site
   workflow_dispatch: {}      # lets you run it any time from the Actions tab
 
 permissions:
@@ -37,6 +38,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           DIGEST_TO: ${{ secrets.DIGEST_TO }}
+          DIGEST_SEND: ${{ github.event.schedule != '0 15-23,0-6 * * *' }}
         run: python -m tracker
 
       - name: Upload digest
@@ -53,4 +55,4 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data docs
           git diff --cached --quiet || git commit -m "Digest $(date -u +%Y-%m-%d)"
-          git push
+          git pull --rebase --quiet && git push

@@ -15,6 +15,7 @@ from .models import Auction
 
 
 def _row(a: Auction, new_keys: set[str]) -> dict:
+    """new_keys: auctions to badge as NEW (first seen in the last 24 hours)."""
     img = a.image_url
     large = img.replace("/thumb.jpg", "/large.jpg") if img else None
     return {
@@ -74,8 +75,8 @@ PAGE = r"""<!doctype html>
 <meta name="theme-color" content="#1F3A2E">
 <style>
 /* ===== THEME: change the site's colors here ===== */
-:root{--bg:#f5f1e8;--card:#fffdf8;--ink:#1f2a24;--muted:#6b6a5e;--line:#e4dccb;--brand:#1F3A2E;--brand-ink:#f5f1e8;--accent:#2d6a4f;--accent-ink:#fff;--amber:#D4943A;--new:#2d6a4f;--tag:#f3e6cf;--tag-ink:#7a5420;--warn:#fff3cd;--warn-ink:#6b4e00}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111714;--card:#18201c;--ink:#e9e4d8;--muted:#a3a08f;--line:#2c3630;--brand:#14261d;--brand-ink:#f0e8d6;--accent:#6fbf8f;--accent-ink:#0f1a14;--amber:#e0a552;--new:#3f9f6a;--tag:#3a2f1c;--tag-ink:#f0c88a;--warn:#3a2f10;--warn-ink:#f5d67a}}
+:root{--bg:#f5f1e8;--card:#fffdf8;--ink:#1f2a24;--muted:#6b6a5e;--line:#e4dccb;--brand:#1F3A2E;--brand-ink:#f5f1e8;--accent:#2d6a4f;--accent-ink:#fff;--amber:#D4943A;--new:#2d6a4f;--tag:#f3e6cf;--tag-ink:#7a5420;--warn:#fff3cd;--warn-ink:#6b4e00;--closing:rgba(220,53,69,.12)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111714;--card:#18201c;--ink:#e9e4d8;--muted:#a3a08f;--line:#2c3630;--brand:#14261d;--brand-ink:#f0e8d6;--accent:#6fbf8f;--accent-ink:#0f1a14;--amber:#e0a552;--new:#3f9f6a;--tag:#3a2f1c;--tag-ink:#f0c88a;--warn:#3a2f10;--warn-ink:#f5d67a;--closing:rgba(248,81,73,.16)}}
 /* ================================================= */
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
@@ -110,6 +111,11 @@ th .arr{opacity:.35}
 th.sorted .arr{opacity:1;color:var(--accent)}
 td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
 tr:last-child td{border-bottom:0}
+tr.closing td{background:var(--closing)}
+tr.closing .when .meta{color:#c0392b;font-weight:700}
+.fresh{display:flex;align-items:center;gap:8px}
+#refresh{padding:5px 10px;font-size:13px}
+#refresh.spin{opacity:.6;pointer-events:none}
 td.num{text-align:right;white-space:nowrap}
 td.when{white-space:nowrap}
 .thumb{width:84px;height:64px;object-fit:cover;border-radius:6px;display:block;cursor:zoom-in;background:var(--line)}
@@ -186,7 +192,7 @@ td.sz{white-space:nowrap}
       <label>Site
         <select id="src"><option value="">All sites</option><option value="storagetreasures">StorageTreasures</option><option value="bid13">Bid13</option></select>
       </label>
-      <label class="chk"><input type="checkbox" id="newonly"> New today</label>
+      <label class="chk"><input type="checkbox" id="newonly"> New (last 24 hrs)</label>
       <label class="chk"><input type="checkbox" id="photoonly"> Has photo</label>
       <button id="reset">Reset</button>
     </div>
@@ -196,6 +202,7 @@ td.sz{white-space:nowrap}
 
   <div class="summary">
     <span id="count"></span>
+    <span class="fresh"><span id="asof"></span> <button id="refresh" type="button" title="Load the latest bids">↻ Refresh bids</button></span>
     <label class="chk" id="sortm">Sort
       <select id="sortsel">
         <option value="end:1">Ending soonest</option><option value="dist:1">Closest</option>
@@ -352,14 +359,15 @@ function render() {
   $("sortsel").value = sortKey + ":" + sortDir;
 
   const nNew = list.filter(a => a.new).length;
-  $("count").textContent = `${list.length.toLocaleString()} auctions within ${r} mi of ${center.n}` + (nNew ? ` · ${nNew} new today` : "");
+  $("count").textContent = `${list.length.toLocaleString()} auctions within ${r} mi of ${center.n}` + (nNew ? ` · ${nNew} new in the last 24 hrs` : "");
   const html = list.slice(0, shown).map(a => {
     const soon = a.end && new Date(a.end) - now < 6 * 36e5;
     const badges = (a.new ? '<span class="badge new">NEW</span>' : "") + a.tags.map(t => `<span class="badge tag">${esc(t)}</span>`).join("");
     const photoCell = a.img
       ? `<img class="thumb" loading="lazy" src="${esc(a.img)}" data-big="${esc(a.big || a.img)}" data-i="${esc(a.id)}" alt="Unit photo">`
       : `<a class="nophoto" href="${esc(a.url)}" target="_blank" rel="noopener">See listing</a>`;
-    return `<tr>
+    const closing = a.end && new Date(a.end) - now < 36e5;
+    return `<tr class="${closing ? "closing" : ""}">
       <td class="ph">${photoCell}</td>
       <td class="when" data-l="Ends"><a class="${soon ? "soon" : ""}" href="${esc(a.url)}" target="_blank" rel="noopener" title="Open this auction">${esc(fmtEnd(a.end))}</a><div class="meta">${a.end ? left(a.end) : ""}</div></td>
       <td class="num" data-l="Distance">${a.dist.toFixed(0)} mi</td>
@@ -378,6 +386,24 @@ function render() {
 
 function rerender() { shown = PAGE; render(); }
 
+function asOf() {
+  const mins = Math.round((Date.now() - Date.parse(D.updated)) / 6e4);
+  $("asof").textContent = "Bids as of " + (mins < 1 ? "just now" : mins < 60 ? mins + " min ago" : Math.round(mins / 60) + " hr ago");
+}
+async function refreshData(manual) {
+  const btn = $("refresh");
+  if (manual) { btn.classList.add("spin"); btn.textContent = "↻ Checking…"; }
+  try {
+    const d = await fetch("auctions.json?t=" + Date.now(), {cache: "no-store"}).then(r => r.json());
+    const changed = d.updated !== D.updated;
+    D = d; render(); asOf();
+    if (manual) btn.textContent = changed ? "✓ Updated" : "✓ Already latest";
+  } catch (e) {
+    if (manual) btn.textContent = "Couldn't refresh";
+  }
+  if (manual) setTimeout(() => { btn.classList.remove("spin"); btn.textContent = "↻ Refresh bids"; }, 2000);
+}
+
 function setup() {
   const radii = [5, 10, 15, 25, 35, 50, 75, 100, 150].filter(x => x <= D.max_radius);
   $("radius").innerHTML = radii.map(x => `<option value="${x}">${x} miles</option>`).join("");
@@ -387,7 +413,7 @@ function setup() {
   document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", tags.has(c.dataset.t)));
 
   const upd = new Date(D.updated).toLocaleString("en-US", {weekday: "long", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Los_Angeles"});
-  $("sub").textContent = `Updated ${upd}. Refreshes every morning. Sources: StorageTreasures and Bid13.`;
+  $("sub").textContent = `Updated ${upd}. Updates every hour, 6 AM–10 PM. Sources: StorageTreasures and Bid13.`;
   const w = (D.watched || []).filter(x => x.count > 0);
   if (w.length) $("warn").innerHTML += `<div class="warn" style="background:var(--tag);color:var(--tag-ink)"><b>Also worth a look:</b> ${w.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}: ${x.count} in WA</a>`).join(" · ")} (not in the list below yet)</div>`;
   if (D.errors.length) $("warn").innerHTML += `<div class="warn"><b>Heads up:</b> some sites didn't load on the last update, so the list may be incomplete. (${D.errors.map(esc).join("; ")})</div>`;
@@ -434,6 +460,10 @@ function setup() {
   lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("x")) close(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
 
+  $("refresh").addEventListener("click", () => refreshData(true));
+  setInterval(() => refreshData(false), 10 * 60 * 1000);  // quietly pick up the hourly update
+  setInterval(asOf, 60 * 1000);
+  asOf();
   render();
 }
 
