@@ -349,7 +349,7 @@ function teambar() {
   if (!D.notes_url) { el.innerHTML = `<span title="Stars and notes are saved in this browser">★ and notes saved on this device</span>`; return; }
   const t = NOTES.team();
   if (!t) {
-    el.innerHTML = `Share stars &amp; notes: <input id="tcode" placeholder="Team code" autocomplete="off"> <input id="tname" placeholder="Your name"> <button id="tjoin">Join</button>`;
+    el.innerHTML = `Share stars &amp; notes: <input id="tcode" placeholder="Team code" autocomplete="off"> <select id="tname"><option value="">I am…</option><option>Chucky</option><option>Gimp</option></select> <button id="tjoin">Join</button>`;
   } else {
     el.innerHTML = `<span>★ Shared notes as <b>${esc(t.name || "?")}</b></span> <button id="tleave" class="addnote">change</button>`;
   }
