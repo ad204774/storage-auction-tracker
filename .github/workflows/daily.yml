@@ -4,7 +4,11 @@ on:
   schedule:
     - cron: "17 14 * * *"         # ~6:17 AM Pacific: full update + email (off the top of the hour, when GitHub drops scheduled runs)
     - cron: "17 15-23,0-6 * * *"  # hourly at :17 until 10 PM Pacific: refresh bids on the site
-  workflow_dispatch: {}      # lets you run it any time from the Actions tab
+  workflow_dispatch:         # run it any time from the Actions tab (also used by the hourly kick in extras/shared-notes.gs)
+    inputs:
+      email:
+        description: "Send the email digest too? (yes/no)"
+        default: "no"
 
 permissions:
   contents: write            # to commit data/ and docs/ back to the repo
@@ -38,7 +42,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           DIGEST_TO: ${{ secrets.DIGEST_TO }}
-          DIGEST_SEND: ${{ github.event.schedule != '17 15-23,0-6 * * *' }}
+          DIGEST_SEND: ${{ github.event.schedule == '17 14 * * *' || inputs.email == 'yes' }}
         run: python -m tracker
 
       - name: Upload digest

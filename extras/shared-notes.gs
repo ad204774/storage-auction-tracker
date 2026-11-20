@@ -81,3 +81,25 @@ function doPost(e) {
   }
   return out_({ok: true});
 }
+
+/**
+ * Hourly kick for the bid updates (GitHub's own schedule is unreliable for this repo).
+ * Setup: add a Script property GH_TOKEN (Project Settings -> Script properties) holding a
+ * fine-grained GitHub token for this repo only, with "Actions: Read and write".
+ * Then Triggers (alarm-clock icon) -> Add Trigger -> kickUpdate, Time-driven, Hour timer, Every hour.
+ */
+function kickUpdate() {
+  const hour = Number(Utilities.formatDate(new Date(), "America/Los_Angeles", "H"));
+  if (hour < 6 || hour > 22) return;  // 6 AM to 10 PM Pacific
+  const token = PropertiesService.getScriptProperties().getProperty("GH_TOKEN");
+  if (!token) throw new Error("Add the GH_TOKEN script property first.");
+  const res = UrlFetchApp.fetch(
+    "https://api.github.com/repos/ad204774/storage-auction-tracker/actions/workflows/daily.yml/dispatches", {
+      method: "post",
+      contentType: "application/json",
+      headers: {Authorization: "Bearer " + token, Accept: "application/vnd.github+json"},
+      payload: JSON.stringify({ref: "main", inputs: {email: hour === 6 ? "yes" : "no"}}),
+      muteHttpExceptions: true,
+    });
+  if (res.getResponseCode() !== 204) throw new Error("GitHub said " + res.getResponseCode() + ": " + res.getContentText());
+}
