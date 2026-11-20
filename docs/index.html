@@ -3,15 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Storage Auction Finder</title>
+<title>Line &amp; Locker</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1F3A2E">
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2330;--muted:#667085;--line:#e3e6eb;--accent:#1f6feb;--accent-ink:#fff;--new:#1f7a3a;--tag:#eef2ff;--tag-ink:#3b4a9a;--warn:#fff3cd;--warn-ink:#6b4e00}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1218;--card:#171b23;--ink:#e6e9ef;--muted:#98a2b3;--line:#2a303b;--accent:#4c8dff;--accent-ink:#fff;--new:#3fb950;--tag:#232a3d;--tag-ink:#aab8ff;--warn:#3a2f10;--warn-ink:#f5d67a}}
+/* ===== THEME: change the site's colors here ===== */
+:root{--bg:#f5f1e8;--card:#fffdf8;--ink:#1f2a24;--muted:#6b6a5e;--line:#e4dccb;--brand:#1F3A2E;--brand-ink:#f5f1e8;--accent:#2d6a4f;--accent-ink:#fff;--amber:#D4943A;--new:#2d6a4f;--tag:#f3e6cf;--tag-ink:#7a5420;--warn:#fff3cd;--warn-ink:#6b4e00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111714;--card:#18201c;--ink:#e9e4d8;--muted:#a3a08f;--line:#2c3630;--brand:#14261d;--brand-ink:#f0e8d6;--accent:#6fbf8f;--accent-ink:#0f1a14;--amber:#e0a552;--new:#3f9f6a;--tag:#3a2f1c;--tag-ink:#f0c88a;--warn:#3a2f10;--warn-ink:#f5d67a}}
+/* ================================================= */
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-header{padding:16px 16px 4px;max-width:1300px;margin:0 auto}
-h1{font-size:22px;margin:0 0 2px}
+.topbar{background:var(--brand);color:var(--brand-ink)}
+header{padding:12px 16px;max-width:1300px;margin:0 auto;display:flex;align-items:center;gap:12px}
+header img{width:44px;height:44px;border-radius:10px;flex:none}
+h1{font:700 24px/1.1 Georgia,"Times New Roman",serif;letter-spacing:.5px;margin:0}
+.tagline{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber)}
 .sub{color:var(--muted);font-size:13px}
+#sub{margin:10px 2px 0}
 main{max-width:1300px;margin:0 auto;padding:8px 16px 40px}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:12px}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
@@ -40,8 +49,11 @@ td.num{text-align:right;white-space:nowrap}
 td.when{white-space:nowrap}
 .thumb{width:84px;height:64px;object-fit:cover;border-radius:6px;display:block;cursor:zoom-in;background:var(--line)}
 .nophoto{width:84px;height:64px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);background:var(--bg);border:1px dashed var(--line);text-align:center}
-.fac a{color:var(--accent);text-decoration:none;font-weight:600}
-.fac a:hover{text-decoration:underline}
+td.fac{max-width:240px}
+.fac a{color:var(--accent);font-weight:600;font-size:14px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--accent) 35%,transparent);text-underline-offset:3px}
+.fac a:hover,.when a:hover{text-decoration-color:currentColor}
+.fac a::after,.when a::after{content:" ↗";font-size:11px;opacity:.7}
+.when a{color:inherit;text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 30%,transparent);text-underline-offset:3px}
 .meta{color:var(--muted);font-size:12px}
 .badge{display:inline-block;border-radius:4px;padding:0 5px;font-size:11px;font-weight:700;margin-right:4px;vertical-align:1px}
 .badge.new{background:var(--new);color:#fff}
@@ -73,11 +85,12 @@ td.sz{white-space:nowrap}
 </style>
 </head>
 <body>
-<header>
-  <h1>Storage Auction Finder</h1>
-  <div class="sub" id="sub">Loading…</div>
-</header>
+<div class="topbar"><header>
+  <img src="favicon.svg" alt="">
+  <div><h1>LINE &amp; LOCKER</h1><div class="tagline">Storage Auction Finder</div></div>
+</header></div>
 <main>
+  <div class="sub" id="sub">Loading…</div>
   <div id="warn"></div>
   <div class="panel">
     <div class="row">
@@ -283,9 +296,9 @@ function render() {
       : `<a class="nophoto" href="${esc(a.url)}" target="_blank" rel="noopener">See listing</a>`;
     return `<tr>
       <td class="ph">${photoCell}</td>
-      <td class="when" data-l="Ends"><span class="${soon ? "soon" : ""}">${esc(fmtEnd(a.end))}</span><div class="meta">${a.end ? left(a.end) : ""}</div></td>
+      <td class="when" data-l="Ends"><a class="${soon ? "soon" : ""}" href="${esc(a.url)}" target="_blank" rel="noopener" title="Open this auction">${esc(fmtEnd(a.end))}</a><div class="meta">${a.end ? left(a.end) : ""}</div></td>
       <td class="num" data-l="Distance">${a.dist.toFixed(0)} mi</td>
-      <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
+      <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.fac)}: open this auction">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
       <td class="sz" data-l="Size">${esc(a.size || "")}</td>
       <td>${badges}${highlight(a.txt || "", groups)}</td>
       <td class="num" data-l="Bid">${a.bid != null ? "$" + a.bid.toLocaleString() : ""}</td>
