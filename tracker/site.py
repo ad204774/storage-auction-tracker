@@ -145,7 +145,7 @@ td.fac{max-width:240px}
 .noteedit button{padding:4px 10px;font-size:12px}
 tr.ended td{opacity:.6}
 tr.skipped td{opacity:.45}
-.skip{display:block;margin:6px auto 0;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);font-size:11px;padding:1px 6px;cursor:pointer}
+.skip{display:block;margin:10px 0 0 auto;white-space:nowrap;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);font-size:11px;padding:1px 6px;cursor:pointer}
 .skip:hover{color:#d1242f;border-color:#d1242f}
 .skip.on{background:#d1242f;color:#fff;border-color:#d1242f}
 #toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#222;color:#fff;border-radius:8px;padding:8px 14px;font-size:14px;display:none;z-index:20}
@@ -476,15 +476,15 @@ function render(force) {
       ? `<div class="note" data-note="${esc(a.id)}" title="Click to edit">${highlight(n.note, groups)}<span class="who">${n.by ? esc(n.by) + " · " : ""}${n.at ? ago(n.at) : ""}</span></div>`
       : `<button class="addnote" data-note="${esc(a.id)}">📝 Add note</button>`;
     const send = `<button class="send" data-send="${esc(a.id)}" title="Text or email this auction (and your note) to Chad">📤 Send</button>`;
-    const skip = `<button class="skip${n.skip ? " on" : ""}" data-skip="${esc(a.id)}" title="${n.skip ? "Bring this auction back" : "Nothing here for us: hide it"}">${n.skip ? "Skipped" : "Skip"}</button>`;
+    const skip = `<button class="skip${n.skip ? " on" : ""}" data-skip="${esc(a.id)}" title="${n.skip ? "Bring this auction back" : "Nothing here for us: hide it"}">${n.skip ? "Skipped" : "✕ Skip"}</button>`;
     return `<tr class="${closing ? "closing" : ""}${ended ? " ended" : ""}${n.skip ? " skipped" : ""}">
-      <td class="ph">${photoCell}${star}${skip}</td>
+      <td class="ph">${photoCell}${star}</td>
       <td class="when" data-l="Ends"><a class="${soon ? "soon" : ""}" href="${esc(a.url)}" target="_blank" rel="noopener" title="Open this auction">${esc(fmtEnd(a.end))}</a><div class="meta">${a.end ? left(a.end) : ""}</div></td>
       <td class="num" data-l="Distance">${isFinite(a.dist) ? a.dist.toFixed(0) + " mi" : ""}</td>
       <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.fac)}: open this auction">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
       <td class="sz" data-l="Size">${esc(a.size || "")}</td>
       <td>${ended ? '<span class="badge" style="background:var(--muted);color:#fff">ENDED</span>' : ""}${badges}${highlight(a.txt || "", groups)}<div class="notecell">${note}${n.note ? "" : send}</div>${n.note ? `<div>${send.replace('class="send"', 'class="send" style="margin-left:0"')}</div>` : ""}</td>
-      <td class="num" data-l="Bid">${a.bid != null ? "$" + a.bid.toLocaleString() : ""}</td>
+      <td class="num" data-l="Bid">${a.bid != null ? "$" + a.bid.toLocaleString() : ""}${skip}</td>
     </tr>`;
   }).join("");
   $("rows").innerHTML = html || '<tr><td colspan="7" style="padding:24px;text-align:center;color:var(--muted)">No auctions match. Try widening the radius or clearing filters.</td></tr>';
