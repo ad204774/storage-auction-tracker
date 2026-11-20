@@ -64,10 +64,13 @@ td.fac{max-width:240px}
 .badge.new{background:var(--new);color:#fff}
 .badge.tag{background:var(--tag);color:var(--tag-ink);font-weight:600}
 .star{background:none;border:0;padding:0 2px;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;vertical-align:-3px}
-.star.on{color:var(--amber)}
+.star.on{color:#FFC800;text-shadow:0 0 1px #8a6a00,0 0 6px rgba(255,200,0,.6)}
+.star:hover{color:#FFC800}
 .ph .star{display:block;margin:4px auto 0}
-.note{margin-top:6px;background:var(--tag);color:var(--ink);border-radius:6px;padding:5px 8px;font-size:13px;white-space:pre-wrap;cursor:text}
-.note .who{color:var(--muted);font-size:11px;display:block;margin-top:2px}
+.note{margin-top:8px;background:#fff8d6;color:#2b2410;border:2px solid #FFC800;border-left-width:6px;border-radius:6px;padding:6px 10px;font-size:13px;white-space:pre-wrap;cursor:text}
+.note::before{content:"📝 MY NOTES";display:block;font-size:10px;font-weight:800;letter-spacing:.08em;color:#8a6a00;margin-bottom:2px}
+.note .who{color:#8a6a00;font-size:11px;display:block;margin-top:3px}
+.send{background:none;border:0;padding:0;margin:4px 0 0 10px;color:var(--accent);font-size:12px;cursor:pointer}
 .addnote{background:none;border:0;padding:0;margin-top:4px;color:var(--accent);font-size:12px;cursor:pointer}
 .noteedit textarea{width:100%;min-height:60px;font:inherit;font-size:13px;margin-top:6px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px}
 .noteedit .btns{display:flex;gap:6px;margin-top:4px}
@@ -384,13 +387,14 @@ function render(force) {
     const note = n.note
       ? `<div class="note" data-note="${esc(a.id)}" title="Click to edit">${highlight(n.note, groups)}<span class="who">${n.by ? esc(n.by) + " · " : ""}${n.at ? ago(n.at) : ""}</span></div>`
       : `<button class="addnote" data-note="${esc(a.id)}">📝 Add note</button>`;
+    const send = `<button class="send" data-send="${esc(a.id)}" title="Text or email this auction (and your note) to Chad">📤 Send</button>`;
     return `<tr class="${closing ? "closing" : ""}${ended ? " ended" : ""}">
       <td class="ph">${photoCell}${star}</td>
       <td class="when" data-l="Ends"><a class="${soon ? "soon" : ""}" href="${esc(a.url)}" target="_blank" rel="noopener" title="Open this auction">${esc(fmtEnd(a.end))}</a><div class="meta">${a.end ? left(a.end) : ""}</div></td>
       <td class="num" data-l="Distance">${isFinite(a.dist) ? a.dist.toFixed(0) + " mi" : ""}</td>
       <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.fac)}: open this auction">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
       <td class="sz" data-l="Size">${esc(a.size || "")}</td>
-      <td>${ended ? '<span class="badge" style="background:var(--muted);color:#fff">ENDED</span>' : ""}${badges}${highlight(a.txt || "", groups)}<div class="notecell">${note}</div></td>
+      <td>${ended ? '<span class="badge" style="background:var(--muted);color:#fff">ENDED</span>' : ""}${badges}${highlight(a.txt || "", groups)}<div class="notecell">${note}${n.note ? "" : send}</div>${n.note ? `<div>${send.replace('class="send"', 'class="send" style="margin-left:0"')}</div>` : ""}</td>
       <td class="num" data-l="Bid">${a.bid != null ? "$" + a.bid.toLocaleString() : ""}</td>
     </tr>`;
   }).join("");
@@ -482,6 +486,14 @@ function setup() {
       const id = nb.dataset.note, cell = nb.closest(".notecell");
       cell.innerHTML = `<div class="noteedit"><textarea placeholder="What you saw, what it's worth, max bid…">${esc(NOTES.get(id).note || "")}</textarea><div class="btns"><button class="primary" data-save="${esc(id)}">Save</button><button data-cancel>Cancel</button></div></div>`;
       cell.querySelector("textarea").focus();
+      return;
+    }
+    const sd = e.target.closest("[data-send]");
+    if (sd) {
+      const a = render.byId.get(sd.dataset.send), n = NOTES.get(a.id);
+      const text = `${a.fac}, ${a.city} · ${a.size || ""} · bid $${a.bid ?? "?"} · ends ${fmtEnd(a.end)}\n${a.txt || ""}` + (n.note ? `\n\nMy note: ${n.note}` : "");
+      if (navigator.share) navigator.share({title: "Storage auction: " + a.fac, text, url: a.url}).catch(() => {});
+      else location.href = "mailto:?subject=" + encodeURIComponent("Storage auction: " + a.fac) + "&body=" + encodeURIComponent(text + "\n\n" + a.url);
       return;
     }
     const sv = e.target.closest("[data-save]");
