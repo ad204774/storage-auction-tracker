@@ -39,7 +39,7 @@ def _row(a: Auction, new_keys: set[str]) -> dict:
 
 
 def build(out_dir: Path, auctions: list[Auction], new: list[Auction], cfg: dict,
-          errors: list[str], now: datetime | None = None) -> None:
+          errors: list[str], now: datetime | None = None, watched: list[dict] | None = None) -> None:
     now = now or datetime.now(timezone.utc)
     out_dir.mkdir(parents=True, exist_ok=True)
     new_keys = {a.key for a in new}
@@ -51,6 +51,7 @@ def build(out_dir: Path, auctions: list[Auction], new: list[Auction], cfg: dict,
         "max_radius": cfg.get("site_max_radius", 150),
         "keywords": cfg.get("keywords", []),
         "errors": errors,
+        "watched": watched or [],
         "auctions": [_row(a, new_keys) for a in auctions if a.lat is not None],
     }
     (out_dir / "auctions.json").write_text(json.dumps(data, separators=(",", ":")))
@@ -371,7 +372,9 @@ function setup() {
 
   const upd = new Date(D.updated).toLocaleString("en-US", {weekday: "long", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Los_Angeles"});
   $("sub").textContent = `Updated ${upd}. Refreshes every morning. Sources: StorageTreasures and Bid13.`;
-  if (D.errors.length) $("warn").innerHTML = `<div class="warn"><b>Heads up:</b> some sites didn't load on the last update, so the list may be incomplete. (${D.errors.map(esc).join("; ")})</div>`;
+  const w = (D.watched || []).filter(x => x.count > 0);
+  if (w.length) $("warn").innerHTML += `<div class="warn" style="background:var(--tag);color:var(--tag-ink)"><b>Also worth a look:</b> ${w.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}: ${x.count} in WA</a>`).join(" · ")} (not in the list below yet)</div>`;
+  if (D.errors.length) $("warn").innerHTML += `<div class="warn"><b>Heads up:</b> some sites didn't load on the last update, so the list may be incomplete. (${D.errors.map(esc).join("; ")})</div>`;
 
   let t;
   $("search").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 200); });

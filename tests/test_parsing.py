@@ -87,3 +87,9 @@ def test_site_build(tmp_path):
     places = json.loads((tmp_path / "places.json").read_text())
     assert any(p["n"] == "Fall City, WA" for p in places)
     assert "Storage Auction Finder" in (tmp_path / "index.html").read_text()
+
+
+def test_watch_count():
+    from tracker.sources.watch import WATCHED, count
+    assert count("Live Auctions Search Results\nTotal Auctions: 0\n", WATCHED[0]["pattern"]) == 0
+    assert count("Showing  1-10 of 1,234 active auctions near washington", WATCHED[1]["pattern"]) == 1234

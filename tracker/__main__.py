@@ -11,7 +11,7 @@ from pathlib import Path
 
 from . import digest, site
 from .pipeline import Store, dedupe, filter_nearby, tag_keywords
-from .sources import bid13, storagetreasures
+from .sources import bid13, storagetreasures, watch
 
 ROOT = Path(__file__).resolve().parent.parent
 USER_AGENT = (
@@ -56,6 +56,7 @@ def main(argv: list[str] | None = None) -> int:
             except Exception as e:  # keep going if one site breaks
                 traceback.print_exc()
                 errors.append(f"{name}: {type(e).__name__}: {str(e).splitlines()[0][:200]}")
+        watched = watch.check(page)
         browser.close()
 
     auctions = dedupe(collected)
@@ -72,7 +73,7 @@ def main(argv: list[str] | None = None) -> int:
     store.save()
     (ROOT / "data" / "latest.json").write_text(json.dumps([a.to_dict() for a in wide], indent=1))
 
-    site.build(Path(args.out), wide, new_wide, cfg, errors)
+    site.build(Path(args.out), wide, new_wide, cfg, errors, watched=watched)
 
     # The email sticks to the default home + radius.
     nearby = [a for a in wide if a.distance_mi <= cfg["radius_miles"]]
