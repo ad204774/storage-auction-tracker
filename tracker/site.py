@@ -144,6 +144,12 @@ td.fac{max-width:240px}
 .noteedit .btns{display:flex;gap:6px;margin-top:4px}
 .noteedit button{padding:4px 10px;font-size:12px}
 tr.ended td{opacity:.6}
+tr.skipped td{opacity:.45}
+.skip{display:block;margin:6px auto 0;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);font-size:11px;padding:1px 6px;cursor:pointer}
+.skip:hover{color:#d1242f;border-color:#d1242f}
+.skip.on{background:#d1242f;color:#fff;border-color:#d1242f}
+#toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#222;color:#fff;border-radius:8px;padding:8px 14px;font-size:14px;display:none;z-index:20}
+#toast button{background:none;border:0;color:#FFC800;font-weight:700;margin-left:10px;cursor:pointer}
 #teambar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
 #teambar input{padding:4px 8px;font-size:13px;width:110px}
 .soon{color:#d1242f;font-weight:600}
@@ -216,7 +222,8 @@ td.sz{white-space:nowrap}
       </label>
       <label class="chk"><input type="checkbox" id="newonly"> New (last 24 hrs)</label>
       <label class="chk"><input type="checkbox" id="photoonly"> Has photo</label>
-      <label class="chk"><input type="checkbox" id="watchonly"> <span style="color:var(--amber)">★</span> Watching</label>
+      <label class="chk"><input type="checkbox" id="watchonly"> <span style="color:#FFC800">★</span> Watching</label>
+      <label class="chk"><input type="checkbox" id="showskip"> Show skipped</label>
       <button id="reset">Reset</button>
     </div>
     <div class="chips" id="chips"></div>
@@ -252,6 +259,7 @@ td.sz{white-space:nowrap}
   <p class="sub">Distances are straight-line, from the facility's ZIP (Bid13) or city center (StorageTreasures). Always confirm details on the auction page before bidding.</p>
 </main>
 
+<div id="toast"></div>
 <div id="lb" role="dialog" aria-modal="true">
   <button class="x" aria-label="Close">×</button>
   <button class="nav prev" aria-label="Previous photo">‹</button>
@@ -317,15 +325,15 @@ const NOTES = {
     const t = this.team(); if (!t) return;
     try {
       const r = await fetch(D.notes_url + "?key=" + encodeURIComponent(t.key), {cache: "no-store"}).then(r => r.json());
-      if (r.ok) { this.data = r.notes || {}; LS.set("ll_notes", this.data); this.status = ""; }
+      if (r.ok) { this.data = r.notes || {}; for (const n of Object.values(this.data)) n.skip = !!(n.snap && n.snap.skip); LS.set("ll_notes", this.data); this.status = ""; }
       else this.status = "That team code didn't work.";
     } catch (e) { this.status = "Couldn't reach the shared notes; showing this device's copy."; }
   },
   save(a, patch) {
     const t = this.team();
     const cur = {...this.get(a.id), ...patch, by: t ? t.name : "", at: new Date().toISOString()};
-    cur.snap = {fac: a.fac, city: a.city, url: a.url, end: a.end, img: a.img, big: a.big, txt: a.txt, size: a.size, bid: a.bid, src: a.src, lat: a.lat, lon: a.lon};
-    if (!cur.star && !cur.note) delete this.data[a.id]; else this.data[a.id] = cur;
+    cur.snap = {skip: !!cur.skip, fac: a.fac, city: a.city, url: a.url, end: a.end, img: a.img, big: a.big, txt: a.txt, size: a.size, bid: a.bid, src: a.src, lat: a.lat, lon: a.lon};
+    if (!cur.star && !cur.note && !cur.skip) delete this.data[a.id]; else this.data[a.id] = cur;
     LS.set("ll_notes", this.data);
     if (t) fetch(D.notes_url, {method: "POST", headers: {"Content-Type": "text/plain;charset=utf-8"},
       body: JSON.stringify({key: t.key, id: a.id, star: !!cur.star, note: cur.note || "", by: cur.by, snap: cur.snap})})
@@ -372,6 +380,7 @@ function readState() {
   $("newonly").checked = p.get("new") === "1";
   $("photoonly").checked = p.get("ph") === "1";
   $("watchonly").checked = p.get("w") === "1";
+  $("showskip").checked = p.get("sk") === "1";
   tags = new Set((p.get("t") || "").split(",").filter(Boolean));
   if (p.get("sort")) { const [k, d] = p.get("sort").split(":"); sortKey = k; sortDir = +d || 1; }
   const c = p.get("c");
@@ -389,6 +398,7 @@ function writeState() {
   if ($("newonly").checked) p.set("new", "1");
   if ($("photoonly").checked) p.set("ph", "1");
   if ($("watchonly").checked) p.set("w", "1");
+  if ($("showskip").checked) p.set("sk", "1");
   if (tags.size) p.set("t", [...tags].join(","));
   if (!(sortKey === "end" && sortDir === 1)) p.set("sort", sortKey + ":" + sortDir);
   history.replaceState(null, "", p.toString() ? "#" + p : location.pathname);
@@ -397,7 +407,8 @@ function writeState() {
 function render(force) {
   if (!force && document.querySelector(".noteedit")) return;  // don't wipe a note being typed
   const now = Date.now();
-  const watchonly = $("watchonly").checked;
+  const watchonly = $("watchonly").checked, showskip = $("showskip").checked;
+  let nSkipped = 0;
   const groups = parseQuery($("search").value.trim());
   const r = +$("radius").value, ends = +$("ends").value, size = $("size").value;
   const maxbid = $("maxbid").value === "" ? null : +$("maxbid").value;
@@ -409,6 +420,7 @@ function render(force) {
     liveIds.add(a.id);
     if (a.end && new Date(a.end) <= now && !(watchonly && NOTES.get(a.id).star)) continue;
     a.dist = miles(center.lat, center.lon, a.lat, a.lon);
+    if (NOTES.get(a.id).skip && !showskip) { if (a.dist <= r) nSkipped++; continue; }
     if (watchonly) { if (NOTES.get(a.id).star && (!groups.length || matches(groups, [a.txt, a.fac, a.city, a.size, NOTES.get(a.id).note].join(" ").toLowerCase()))) list.push(a); continue; }
     if (a.dist > r) continue;
     if (src && a.src !== src) continue;
@@ -426,7 +438,7 @@ function render(force) {
   }
   if (watchonly) {
     for (const [id, n] of Object.entries(NOTES.data)) {
-      if (!n.star || liveIds.has(id) || !n.snap) continue;
+      if (!n.star || liveIds.has(id) || !n.snap || (n.skip && !showskip)) continue;
       const a = {...n.snap, id, tags: [], new: false, ended: true};
       a.dist = miles(center.lat, center.lon, a.lat, a.lon);
       if (!groups.length || matches(groups, [a.txt, a.fac, a.city, a.size, n.note].join(" ").toLowerCase())) list.push(a);
@@ -449,7 +461,7 @@ function render(force) {
 
   const nNew = list.filter(a => a.new).length;
   $("count").textContent = watchonly ? `${list.length.toLocaleString()} watched auction${list.length === 1 ? "" : "s"} (any distance)`
-    : `${list.length.toLocaleString()} auctions within ${r} mi of ${center.n}` + (nNew ? ` · ${nNew} new in the last 24 hrs` : "");
+    : `${list.length.toLocaleString()} auctions within ${r} mi of ${center.n}` + (nNew ? ` · ${nNew} new in the last 24 hrs` : "") + (nSkipped ? ` · ${nSkipped} skipped (hidden)` : "");
   const html = list.slice(0, shown).map(a => {
     const soon = a.end && new Date(a.end) - now < 6 * 36e5;
     const badges = (a.new ? '<span class="badge new">NEW</span>' : "") + a.tags.map(t => `<span class="badge tag">${esc(t)}</span>`).join("");
@@ -464,8 +476,9 @@ function render(force) {
       ? `<div class="note" data-note="${esc(a.id)}" title="Click to edit">${highlight(n.note, groups)}<span class="who">${n.by ? esc(n.by) + " · " : ""}${n.at ? ago(n.at) : ""}</span></div>`
       : `<button class="addnote" data-note="${esc(a.id)}">📝 Add note</button>`;
     const send = `<button class="send" data-send="${esc(a.id)}" title="Text or email this auction (and your note) to Chad">📤 Send</button>`;
-    return `<tr class="${closing ? "closing" : ""}${ended ? " ended" : ""}">
-      <td class="ph">${photoCell}${star}</td>
+    const skip = `<button class="skip${n.skip ? " on" : ""}" data-skip="${esc(a.id)}" title="${n.skip ? "Bring this auction back" : "Nothing here for us: hide it"}">${n.skip ? "Skipped" : "Skip"}</button>`;
+    return `<tr class="${closing ? "closing" : ""}${ended ? " ended" : ""}${n.skip ? " skipped" : ""}">
+      <td class="ph">${photoCell}${star}${skip}</td>
       <td class="when" data-l="Ends"><a class="${soon ? "soon" : ""}" href="${esc(a.url)}" target="_blank" rel="noopener" title="Open this auction">${esc(fmtEnd(a.end))}</a><div class="meta">${a.end ? left(a.end) : ""}</div></td>
       <td class="num" data-l="Distance">${isFinite(a.dist) ? a.dist.toFixed(0) + " mi" : ""}</td>
       <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.fac)}: open this auction">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
@@ -489,6 +502,14 @@ function showPic() {
   im.src = lbPics[lbAt];
   lb.querySelectorAll(".nav").forEach(b => b.hidden = n < 2);
   lb.querySelector(".num").textContent = n > 1 ? `Photo ${lbAt + 1} of ${n}` : "";
+}
+
+function toast(msg, undo) {
+  const t = $("toast");
+  t.innerHTML = esc(msg) + '<button>Undo</button>';
+  t.querySelector("button").onclick = () => { t.style.display = "none"; undo(); };
+  t.style.display = "block";
+  clearTimeout(toast.t); toast.t = setTimeout(() => { t.style.display = "none"; }, 6000);
 }
 
 function rerender() { shown = PAGE; render(); }
@@ -527,7 +548,7 @@ function setup() {
 
   let t;
   $("search").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 200); });
-  ["radius", "ends", "size", "src", "newonly", "photoonly", "watchonly"].forEach(id => $(id).addEventListener("change", rerender));
+  ["radius", "ends", "size", "src", "newonly", "photoonly", "watchonly", "showskip"].forEach(id => $(id).addEventListener("change", rerender));
   $("maxbid").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 300); });
   $("center").addEventListener("change", () => {
     const v = $("center").value.trim().toLowerCase();
@@ -567,6 +588,13 @@ function setup() {
   $("rows").addEventListener("click", e => {
     const s = e.target.closest("[data-star]");
     if (s) { const a = render.byId.get(s.dataset.star); NOTES.save(a, {star: !NOTES.get(a.id).star}); render(true); return; }
+    const sk = e.target.closest("[data-skip]");
+    if (sk) {
+      const a = render.byId.get(sk.dataset.skip), on = !NOTES.get(a.id).skip;
+      NOTES.save(a, {skip: on}); render(true);
+      if (on && !$("showskip").checked) toast(`Skipped ${a.fac}. `, () => { NOTES.save(a, {skip: false}); render(true); });
+      return;
+    }
     const nb = e.target.closest("[data-note]");
     if (nb && !document.querySelector(".noteedit")) {
       const id = nb.dataset.note, cell = nb.closest(".notecell");

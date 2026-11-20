@@ -57,6 +57,7 @@ jobs:
         run: |
           git config user.name "auction-tracker-bot"
           git config user.email "actions@users.noreply.github.com"
+          git checkout -- docs/index.html   # the page itself only changes with code commits
           git add data docs
           git diff --cached --quiet || git commit -m "Digest $(date -u +%Y-%m-%d)"
           git pull --rebase --quiet && git push
