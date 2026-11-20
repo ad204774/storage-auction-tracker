@@ -72,3 +72,18 @@ def test_keywords_and_render():
 
 def test_city_alias():
     assert distance_from("98024", zip_code=None, city="Battleground", state="WA") is not None
+
+
+def test_site_build(tmp_path):
+    import json
+    from tracker import site
+    rows = storagetreasures.parse((FIX / "storagetreasures.html").read_text(), now=NOW)
+    wide, _ = filter_nearby(rows, "98024", 150)
+    site.build(tmp_path, wide, wide[:1], {"home_zip": "98024", "home_name": "Fall City, WA",
+                                          "radius_miles": 50, "keywords": ["tools"]}, [], now=NOW)
+    data = json.loads((tmp_path / "auctions.json").read_text())
+    assert [a["city"] for a in data["auctions"]] == ["Kent"]
+    assert data["auctions"][0]["new"] and data["home"]["name"] == "Fall City, WA"
+    places = json.loads((tmp_path / "places.json").read_text())
+    assert any(p["n"] == "Fall City, WA" for p in places)
+    assert "Storage Auction Finder" in (tmp_path / "index.html").read_text()

@@ -30,6 +30,11 @@ every morning at about 6 AM Pacific. It saves the digest to `docs/index.html`
 (download it from the run's *Artifacts*, or view the file in the repo) and can email it.
 To run it right now: **Actions → Daily auction digest → Run workflow**.
 
+**The website** (`docs/`) has search ("quoted phrases", -exclude, OR), sortable columns,
+photos you can click to enlarge, filters (ending soon, size, max bid, site, new today, keyword
+chips) and a city/ZIP + radius picker. Filters are saved in the page link, so you can send
+Chad a link to a specific search.
+
 **Website for you and Chad:** if the repo is public, turn on GitHub Pages under
 **Settings → Pages → Build and deployment → Deploy from a branch → `main` / `docs`**.
 The digest is then at `https://<your-username>.github.io/storage-auction-tracker/` and

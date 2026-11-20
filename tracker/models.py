@@ -22,6 +22,8 @@ class Auction:
     ends_at: datetime | None = None  # timezone-aware
     image_url: str | None = None
     # Filled in by the pipeline
+    lat: float | None = None
+    lon: float | None = None
     distance_mi: float | None = None
     first_seen: str | None = None
     tags: list[str] = field(default_factory=list)

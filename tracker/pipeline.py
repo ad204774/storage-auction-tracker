@@ -6,7 +6,7 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-from .geo import distance_from
+from .geo import haversine_mi, locate, zip_latlon
 from .models import Auction
 
 
@@ -17,12 +17,18 @@ def tag_keywords(a: Auction, keywords: list[str]) -> list[str]:
 
 def filter_nearby(auctions: list[Auction], home_zip: str, radius: float) -> tuple[list[Auction], list[Auction]]:
     """Return (nearby, unknown_location)."""
+    home = zip_latlon(home_zip)
+    if home is None:
+        raise ValueError(f"Unknown home ZIP {home_zip}")
     nearby, unknown = [], []
     for a in auctions:
-        a.distance_mi = distance_from(home_zip, zip_code=a.zip_code, city=a.city, state=a.state)
-        if a.distance_mi is None:
+        pt = locate(zip_code=a.zip_code, city=a.city, state=a.state)
+        if pt is None:
             unknown.append(a)
-        elif a.distance_mi <= radius:
+            continue
+        a.lat, a.lon = round(pt[0], 4), round(pt[1], 4)
+        a.distance_mi = round(haversine_mi(*home, *pt), 1)
+        if a.distance_mi <= radius:
             nearby.append(a)
     return nearby, unknown
 

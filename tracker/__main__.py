@@ -9,7 +9,7 @@ import tomllib
 import traceback
 from pathlib import Path
 
-from . import digest
+from . import digest, site
 from .pipeline import Store, dedupe, filter_nearby, tag_keywords
 from .sources import bid13, storagetreasures
 
@@ -24,7 +24,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default=str(ROOT / "config.toml"))
     ap.add_argument("--no-email", action="store_true")
-    ap.add_argument("--out", default=str(ROOT / "docs" / "index.html"))
+    ap.add_argument("--out", default=str(ROOT / "docs"), help="folder for the website")
     args = ap.parse_args(argv)
 
     cfg = tomllib.loads(Path(args.config).read_text())
@@ -59,22 +59,25 @@ def main(argv: list[str] | None = None) -> int:
         browser.close()
 
     auctions = dedupe(collected)
-    nearby, unknown = filter_nearby(auctions, cfg["home_zip"], cfg["radius_miles"])
+    # The website lets you pick any center and radius, so keep everything within site_max_radius.
+    max_r = max(cfg.get("site_max_radius", 150), cfg["radius_miles"])
+    wide, unknown = filter_nearby(auctions, cfg["home_zip"], max_r)
     if unknown:
         print(f"Could not locate {len(unknown)} auctions: " + ", ".join(sorted({f'{a.city}, {a.state}' for a in unknown})))
-    for a in nearby:
+    for a in wide:
         a.tags = tag_keywords(a, cfg.get("keywords", []))
 
     store = Store(ROOT / "data" / "seen.json")
-    new = store.update(nearby)
+    new_wide = store.update(wide)
     store.save()
-    (ROOT / "data" / "latest.json").write_text(json.dumps([a.to_dict() for a in nearby], indent=1))
+    (ROOT / "data" / "latest.json").write_text(json.dumps([a.to_dict() for a in wide], indent=1))
 
-    page_html = digest.render(nearby, new, cfg, errors)
-    out = Path(args.out)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(page_html)
-    print(f"{len(nearby)} within {cfg['radius_miles']} mi, {len(new)} new. Digest: {out}")
+    site.build(Path(args.out), wide, new_wide, cfg, errors)
+
+    # The email sticks to the default home + radius.
+    nearby = [a for a in wide if a.distance_mi <= cfg["radius_miles"]]
+    new = [a for a in new_wide if a.distance_mi <= cfg["radius_miles"]]
+    print(f"{len(wide)} within {max_r} mi; {len(nearby)} within {cfg['radius_miles']} mi, {len(new)} new. Site: {args.out}")
 
     if not args.no_email:
         subject = f"Storage auctions: {len(new)} new near {cfg['home_zip']}"

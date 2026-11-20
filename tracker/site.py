@@ -1,0 +1,430 @@
+"""Build the interactive website in docs/: index.html + auctions.json + places.json.
+
+The page is static (works on GitHub Pages). All sorting, searching, filtering and
+radius math happens in the browser on the JSON data written here.
+"""
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+from .geo import places, zip_latlon
+from .models import Auction
+
+
+def _row(a: Auction, new_keys: set[str]) -> dict:
+    img = a.image_url
+    large = img.replace("/thumb.jpg", "/large.jpg") if img else None
+    return {
+        "id": a.key,
+        "src": a.source,
+        "url": a.url,
+        "fac": a.facility,
+        "city": a.city,
+        "zip": a.zip_code,
+        "addr": a.address,
+        "size": a.unit_size,
+        "txt": a.contents,
+        "bid": a.current_bid,
+        "end": a.ends_at.isoformat() if a.ends_at else None,
+        "img": img,
+        "big": large,
+        "lat": a.lat,
+        "lon": a.lon,
+        "tags": a.tags,
+        "new": a.key in new_keys,
+        "seen": a.first_seen,
+    }
+
+
+def build(out_dir: Path, auctions: list[Auction], new: list[Auction], cfg: dict,
+          errors: list[str], now: datetime | None = None) -> None:
+    now = now or datetime.now(timezone.utc)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    new_keys = {a.key for a in new}
+    home = zip_latlon(cfg["home_zip"])
+    data = {
+        "updated": now.isoformat(timespec="minutes"),
+        "home": {"name": cfg.get("home_name", cfg["home_zip"]), "lat": home[0], "lon": home[1]},
+        "radius": cfg["radius_miles"],
+        "max_radius": cfg.get("site_max_radius", 150),
+        "keywords": cfg.get("keywords", []),
+        "errors": errors,
+        "auctions": [_row(a, new_keys) for a in auctions if a.lat is not None],
+    }
+    (out_dir / "auctions.json").write_text(json.dumps(data, separators=(",", ":")))
+    (out_dir / "places.json").write_text(json.dumps(places("WA"), separators=(",", ":")))
+    (out_dir / "index.html").write_text(PAGE)
+    (out_dir / ".nojekyll").write_text("")
+
+
+PAGE = r"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storage Auction Finder</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2330;--muted:#667085;--line:#e3e6eb;--accent:#1f6feb;--accent-ink:#fff;--new:#1f7a3a;--tag:#eef2ff;--tag-ink:#3b4a9a;--warn:#fff3cd;--warn-ink:#6b4e00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1218;--card:#171b23;--ink:#e6e9ef;--muted:#98a2b3;--line:#2a303b;--accent:#4c8dff;--accent-ink:#fff;--new:#3fb950;--tag:#232a3d;--tag-ink:#aab8ff;--warn:#3a2f10;--warn-ink:#f5d67a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+header{padding:16px 16px 4px;max-width:1300px;margin:0 auto}
+h1{font-size:22px;margin:0 0 2px}
+.sub{color:var(--muted);font-size:13px}
+main{max-width:1300px;margin:0 auto;padding:8px 16px 40px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:12px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+input,select,button{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:7px 9px}
+input[type=checkbox]{padding:0}
+#q{flex:1 1 320px;min-width:0}
+#q input{width:100%}
+.chk{flex-direction:row;align-items:center;gap:6px;font-size:14px;color:var(--ink)}
+button{cursor:pointer}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:3px 10px;font-size:13px;cursor:pointer;user-select:none}
+.chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.help{font-size:12px;color:var(--muted);margin-top:6px}
+.summary{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:4px 2px 8px;color:var(--muted);font-size:13px}
+.warn{background:var(--warn);color:var(--warn-ink);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:13px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th{position:sticky;top:0;background:var(--card);text-align:left;font-size:12px;color:var(--muted);font-weight:600;padding:9px 8px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;user-select:none}
+th.nosort{cursor:default}
+th .arr{opacity:.35}
+th.sorted .arr{opacity:1;color:var(--accent)}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num{text-align:right;white-space:nowrap}
+td.when{white-space:nowrap}
+.thumb{width:84px;height:64px;object-fit:cover;border-radius:6px;display:block;cursor:zoom-in;background:var(--line)}
+.nophoto{width:84px;height:64px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);background:var(--bg);border:1px dashed var(--line);text-align:center}
+.fac a{color:var(--accent);text-decoration:none;font-weight:600}
+.fac a:hover{text-decoration:underline}
+.meta{color:var(--muted);font-size:12px}
+.badge{display:inline-block;border-radius:4px;padding:0 5px;font-size:11px;font-weight:700;margin-right:4px;vertical-align:1px}
+.badge.new{background:var(--new);color:#fff}
+.badge.tag{background:var(--tag);color:var(--tag-ink);font-weight:600}
+.soon{color:#d1242f;font-weight:600}
+mark{background:#ffe08a;color:#000;border-radius:2px}
+.more{text-align:center;margin:14px}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:10;padding:16px}
+#lb.open{display:flex}
+#lb img{max-width:100%;max-height:78vh;border-radius:8px}
+#lb .cap{color:#fff;margin-top:10px;text-align:center;max-width:800px}
+#lb a{color:#9cc2ff}
+#lb .x{position:absolute;top:10px;right:14px;color:#fff;font-size:30px;background:none;border:0}
+@media (max-width:760px){
+  table,thead,tbody,tr,td{display:block}
+  thead{display:none}
+  table{border:0;background:none}
+  tr{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;display:grid;grid-template-columns:96px 1fr;gap:0 10px;padding:10px}
+  td{border:0;padding:2px 0}
+  td.ph{grid-row:span 5}
+  td.num,td.when{text-align:left}
+  td[data-l]::before{content:attr(data-l)": ";color:var(--muted);font-size:12px}
+  #sortm{display:flex}
+}
+#sortm{display:none}
+#ftoggle{display:none;margin-top:10px;width:100%}
+td.sz{white-space:nowrap}
+@media (max-width:760px){#ftoggle{display:block}#filters{display:none}#filters.open{display:block}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Storage Auction Finder</h1>
+  <div class="sub" id="sub">Loading…</div>
+</header>
+<main>
+  <div id="warn"></div>
+  <div class="panel">
+    <div class="row">
+      <label id="q">Search
+        <input id="search" type="search" placeholder='e.g.  tools compressor   "flat screen"   -clothes   bike OR kayak' autocomplete="off">
+      </label>
+      <label>Near
+        <input id="center" list="places" placeholder="City or ZIP" style="width:190px">
+        <datalist id="places"></datalist>
+      </label>
+      <label>Within
+        <select id="radius"></select>
+      </label>
+    </div>
+    <button id="ftoggle" type="button">Filters ▾</button>
+    <div id="filters">
+    <div class="help">Search matches all words. Use "quotes" for an exact phrase, -word to exclude, and OR between alternatives. It looks at contents, facility, city and size.</div>
+    <div class="row" style="margin-top:10px">
+      <label>Ends within
+        <select id="ends"><option value="">Any time</option><option value="6">6 hours</option><option value="24">24 hours</option><option value="48">48 hours</option><option value="168">7 days</option></select>
+      </label>
+      <label>Unit size
+        <select id="size"><option value="">Any size</option><option value="s">Small (up to 5×10)</option><option value="m">Medium (to 10×15)</option><option value="l">Large (10×20 and up)</option></select>
+      </label>
+      <label>Max bid ($)
+        <input id="maxbid" type="number" min="0" step="10" placeholder="No limit" style="width:110px">
+      </label>
+      <label>Site
+        <select id="src"><option value="">All sites</option><option value="storagetreasures">StorageTreasures</option><option value="bid13">Bid13</option></select>
+      </label>
+      <label class="chk"><input type="checkbox" id="newonly"> New today</label>
+      <label class="chk"><input type="checkbox" id="photoonly"> Has photo</label>
+      <button id="reset">Reset</button>
+    </div>
+    <div class="chips" id="chips"></div>
+    </div>
+  </div>
+
+  <div class="summary">
+    <span id="count"></span>
+    <label class="chk" id="sortm">Sort
+      <select id="sortsel">
+        <option value="end:1">Ending soonest</option><option value="dist:1">Closest</option>
+        <option value="bid:1">Lowest bid</option><option value="bid:-1">Highest bid</option>
+        <option value="sqft:-1">Largest unit</option><option value="new:-1">Newest first</option>
+      </select>
+    </label>
+  </div>
+
+  <table>
+    <thead><tr>
+      <th class="nosort">Photo</th>
+      <th data-k="end">Ends <span class="arr">▲</span></th>
+      <th data-k="dist">Distance <span class="arr">▲</span></th>
+      <th data-k="fac">Facility <span class="arr">▲</span></th>
+      <th data-k="sqft">Size <span class="arr">▲</span></th>
+      <th data-k="txt">Contents <span class="arr">▲</span></th>
+      <th data-k="bid">Bid <span class="arr">▲</span></th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="more"><button id="more" class="primary" hidden>Show more</button></div>
+  <p class="sub">Distances are straight-line, from the facility's ZIP (Bid13) or city center (StorageTreasures). Always confirm details on the auction page before bidding.</p>
+</main>
+
+<div id="lb" role="dialog" aria-modal="true">
+  <button class="x" aria-label="Close">×</button>
+  <img alt="">
+  <div class="cap"></div>
+</div>
+
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+const SITE = {storagetreasures: "StorageTreasures", bid13: "Bid13"};
+const PAGE = 100;
+let D, PLACES = [], center = null, sortKey = "end", sortDir = 1, shown = PAGE, tags = new Set();
+
+function miles(a, b, c, d) {
+  const r = 3958.8, t = Math.PI / 180;
+  const x = Math.sin((c - a) * t / 2) ** 2 + Math.cos(a * t) * Math.cos(c * t) * Math.sin((d - b) * t / 2) ** 2;
+  return 2 * r * Math.asin(Math.sqrt(x));
+}
+function sqft(s) {
+  const m = /(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i.exec(s || "");
+  return m ? +m[1] * +m[2] : null;
+}
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+// Search: words are ANDed, "phrases" exact, -word excludes, a OR b alternatives.
+function parseQuery(q) {
+  const toks = [];
+  const re = /(-?)"([^"]+)"|(\S+)/g; let m;
+  while ((m = re.exec(q))) toks.push(m[3] !== undefined ? {neg: m[3].startsWith("-") && m[3].length > 1, t: m[3].replace(/^-/, "")} : {neg: !!m[1], t: m[2]});
+  const groups = []; // each group is OR of terms; all groups must match
+  for (let i = 0; i < toks.length; i++) {
+    const tk = toks[i];
+    if (tk.t.toUpperCase() === "OR" && !tk.neg) continue;
+    if (i > 0 && toks[i - 1].t.toUpperCase() === "OR" && groups.length && !tk.neg) groups[groups.length - 1].terms.push(tk.t.toLowerCase());
+    else groups.push({neg: tk.neg, terms: [tk.t.toLowerCase()]});
+  }
+  return groups;
+}
+function matches(groups, text) {
+  return groups.every(g => { const hit = g.terms.some(t => text.includes(t)); return g.neg ? !hit : hit; });
+}
+function highlight(s, groups) {
+  let out = esc(s);
+  const terms = groups.filter(g => !g.neg).flatMap(g => g.terms).filter(t => t.length > 1);
+  for (const t of terms) out = out.replace(new RegExp("(" + t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi"), "<mark>$1</mark>");
+  return out;
+}
+
+function fmtEnd(iso) {
+  if (!iso) return "?";
+  const d = new Date(iso);
+  return d.toLocaleString("en-US", {weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Los_Angeles"});
+}
+function left(iso) {
+  const h = (new Date(iso) - Date.now()) / 36e5;
+  if (h < 0) return "ended";
+  if (h < 1) return Math.round(h * 60) + " min left";
+  if (h < 48) return Math.round(h) + " hr left";
+  return Math.round(h / 24) + " days left";
+}
+
+function readState() {
+  const p = new URLSearchParams(location.hash.slice(1));
+  $("search").value = p.get("q") || "";
+  $("radius").value = p.get("r") || D.radius;
+  $("ends").value = p.get("e") || "";
+  $("size").value = p.get("s") || "";
+  $("maxbid").value = p.get("b") || "";
+  $("src").value = p.get("src") || "";
+  $("newonly").checked = p.get("new") === "1";
+  $("photoonly").checked = p.get("ph") === "1";
+  tags = new Set((p.get("t") || "").split(",").filter(Boolean));
+  if (p.get("sort")) { const [k, d] = p.get("sort").split(":"); sortKey = k; sortDir = +d || 1; }
+  const c = p.get("c");
+  const pl = c && PLACES.find(x => x.n === c);
+  center = pl || {n: D.home.name, lat: D.home.lat, lon: D.home.lon};
+  $("center").value = center.n;
+}
+function writeState() {
+  const p = new URLSearchParams();
+  const set = (k, v) => { if (v) p.set(k, v); };
+  set("q", $("search").value.trim());
+  if (center && center.n !== D.home.name) p.set("c", center.n);
+  if (+$("radius").value !== D.radius) p.set("r", $("radius").value);
+  set("e", $("ends").value); set("s", $("size").value); set("b", $("maxbid").value); set("src", $("src").value);
+  if ($("newonly").checked) p.set("new", "1");
+  if ($("photoonly").checked) p.set("ph", "1");
+  if (tags.size) p.set("t", [...tags].join(","));
+  if (!(sortKey === "end" && sortDir === 1)) p.set("sort", sortKey + ":" + sortDir);
+  history.replaceState(null, "", p.toString() ? "#" + p : location.pathname);
+}
+
+function render() {
+  const now = Date.now();
+  const groups = parseQuery($("search").value.trim());
+  const r = +$("radius").value, ends = +$("ends").value, size = $("size").value;
+  const maxbid = $("maxbid").value === "" ? null : +$("maxbid").value;
+  const src = $("src").value, newonly = $("newonly").checked, photo = $("photoonly").checked;
+
+  let list = [];
+  for (const a of D.auctions) {
+    if (a.end && new Date(a.end) <= now) continue;
+    a.dist = miles(center.lat, center.lon, a.lat, a.lon);
+    if (a.dist > r) continue;
+    if (src && a.src !== src) continue;
+    if (newonly && !a.new) continue;
+    if (photo && !a.img) continue;
+    if (maxbid !== null && (a.bid ?? 0) > maxbid) continue;
+    if (ends && (!a.end || new Date(a.end) - now > ends * 36e5)) continue;
+    a.sqft = sqft(a.size);
+    if (size === "s" && !(a.sqft && a.sqft <= 50)) continue;
+    if (size === "m" && !(a.sqft && a.sqft > 50 && a.sqft <= 150)) continue;
+    if (size === "l" && !(a.sqft && a.sqft > 150)) continue;
+    if (tags.size && ![...tags].some(t => a.tags.includes(t))) continue;
+    if (groups.length && !matches(groups, [a.txt, a.fac, a.city, a.size].join(" ").toLowerCase())) continue;
+    list.push(a);
+  }
+  const val = a => sortKey === "end" ? (a.end ? Date.parse(a.end) : Infinity)
+    : sortKey === "new" ? (a.new ? 1 : 0)
+    : sortKey === "fac" || sortKey === "txt" ? String(a[sortKey] || "").toLowerCase()
+    : (a[sortKey] ?? (sortDir > 0 ? Infinity : -Infinity));
+  list.sort((x, y) => { const a = val(x), b = val(y); return (a < b ? -1 : a > b ? 1 : 0) * sortDir || x.dist - y.dist; });
+
+  document.querySelectorAll("th[data-k]").forEach(th => {
+    const on = th.dataset.k === sortKey;
+    th.classList.toggle("sorted", on);
+    th.querySelector(".arr").textContent = on && sortDir < 0 ? "▼" : "▲";
+  });
+  $("sortsel").value = sortKey + ":" + sortDir;
+
+  const nNew = list.filter(a => a.new).length;
+  $("count").textContent = `${list.length.toLocaleString()} auctions within ${r} mi of ${center.n}` + (nNew ? ` · ${nNew} new today` : "");
+  const html = list.slice(0, shown).map(a => {
+    const soon = a.end && new Date(a.end) - now < 6 * 36e5;
+    const badges = (a.new ? '<span class="badge new">NEW</span>' : "") + a.tags.map(t => `<span class="badge tag">${esc(t)}</span>`).join("");
+    const photoCell = a.img
+      ? `<img class="thumb" loading="lazy" src="${esc(a.img)}" data-big="${esc(a.big || a.img)}" data-i="${esc(a.id)}" alt="Unit photo">`
+      : `<a class="nophoto" href="${esc(a.url)}" target="_blank" rel="noopener">See listing</a>`;
+    return `<tr>
+      <td class="ph">${photoCell}</td>
+      <td class="when" data-l="Ends"><span class="${soon ? "soon" : ""}">${esc(fmtEnd(a.end))}</span><div class="meta">${a.end ? left(a.end) : ""}</div></td>
+      <td class="num" data-l="Distance">${a.dist.toFixed(0)} mi</td>
+      <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
+      <td class="sz" data-l="Size">${esc(a.size || "")}</td>
+      <td>${badges}${highlight(a.txt || "", groups)}</td>
+      <td class="num" data-l="Bid">${a.bid != null ? "$" + a.bid.toLocaleString() : ""}</td>
+    </tr>`;
+  }).join("");
+  $("rows").innerHTML = html || '<tr><td colspan="7" style="padding:24px;text-align:center;color:var(--muted)">No auctions match. Try widening the radius or clearing filters.</td></tr>';
+  $("more").hidden = list.length <= shown;
+  $("more").textContent = `Show more (${(list.length - shown).toLocaleString()} left)`;
+  render.list = list;
+  writeState();
+}
+
+function rerender() { shown = PAGE; render(); }
+
+function setup() {
+  const radii = [5, 10, 15, 25, 35, 50, 75, 100, 150].filter(x => x <= D.max_radius);
+  $("radius").innerHTML = radii.map(x => `<option value="${x}">${x} miles</option>`).join("");
+  $("places").innerHTML = PLACES.filter(p => /, WA$/.test(p.n)).map(p => `<option value="${esc(p.n)}">`).join("");
+  $("chips").innerHTML = D.keywords.map(k => `<span class="chip" data-t="${esc(k)}">${esc(k)}</span>`).join("");
+  readState();
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", tags.has(c.dataset.t)));
+
+  const upd = new Date(D.updated).toLocaleString("en-US", {weekday: "long", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Los_Angeles"});
+  $("sub").textContent = `Updated ${upd}. Refreshes every morning. Sources: StorageTreasures and Bid13.`;
+  if (D.errors.length) $("warn").innerHTML = `<div class="warn"><b>Heads up:</b> some sites didn't load on the last update, so the list may be incomplete. (${D.errors.map(esc).join("; ")})</div>`;
+
+  let t;
+  $("search").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 200); });
+  ["radius", "ends", "size", "src", "newonly", "photoonly"].forEach(id => $(id).addEventListener("change", rerender));
+  $("maxbid").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 300); });
+  $("center").addEventListener("change", () => {
+    const v = $("center").value.trim().toLowerCase();
+    const pl = PLACES.find(p => p.n.toLowerCase() === v)
+      || PLACES.find(p => p.n.toLowerCase().startsWith(v))
+      || PLACES.find(p => p.n.toLowerCase().includes(v));
+    if (pl) { center = pl; $("center").value = pl.n; rerender(); }
+    else $("center").value = center.n;
+  });
+  $("chips").addEventListener("click", e => {
+    const c = e.target.closest(".chip"); if (!c) return;
+    tags.has(c.dataset.t) ? tags.delete(c.dataset.t) : tags.add(c.dataset.t);
+    c.classList.toggle("on"); rerender();
+  });
+  document.querySelectorAll("th[data-k]").forEach(th => th.addEventListener("click", () => {
+    const k = th.dataset.k;
+    if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = (k === "bid" || k === "sqft") ? -1 : 1; if (k === "end" || k === "dist" || k === "fac" || k === "txt") sortDir = 1; }
+    rerender();
+  }));
+  $("sortsel").addEventListener("change", () => { const [k, d] = $("sortsel").value.split(":"); sortKey = k; sortDir = +d; rerender(); });
+  $("more").addEventListener("click", () => { shown += PAGE; render(); });
+  $("reset").addEventListener("click", () => { history.replaceState(null, "", location.pathname); sortKey = "end"; sortDir = 1; readState(); document.querySelectorAll(".chip").forEach(c => c.classList.remove("on")); rerender(); });
+
+  $("ftoggle").addEventListener("click", () => { const f = $("filters"); f.classList.toggle("open"); $("ftoggle").textContent = f.classList.contains("open") ? "Hide filters ▴" : "Filters ▾"; });
+
+  // Photo viewer
+  const lb = $("lb");
+  $("rows").addEventListener("click", e => {
+    const img = e.target.closest("img.thumb"); if (!img) return;
+    const a = D.auctions.find(x => x.id === img.dataset.i);
+    lb.querySelector("img").src = img.dataset.big;
+    lb.querySelector("img").onerror = function () { this.onerror = null; this.src = img.src; };
+    lb.querySelector(".cap").innerHTML = `<b>${esc(a.fac)}</b>, ${esc(a.city)} · ${esc(a.size || "")}<br>${esc(a.txt || "")}<br><a href="${esc(a.url)}" target="_blank" rel="noopener">Open the listing on ${SITE[a.src] || a.src} →</a>`;
+    lb.classList.add("open");
+  });
+  const close = () => lb.classList.remove("open");
+  lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("x")) close(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+
+  render();
+}
+
+Promise.all([
+  fetch("auctions.json", {cache: "no-cache"}).then(r => r.json()),
+  fetch("places.json").then(r => r.json()).catch(() => []),
+]).then(([d, p]) => { D = d; PLACES = p; setup(); })
+  .catch(e => { $("sub").textContent = "Couldn't load auction data: " + e; });
+})();
+</script>
+</body>
+</html>
+"""

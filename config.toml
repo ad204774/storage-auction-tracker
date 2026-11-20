@@ -1,7 +1,9 @@
 # Storage auction tracker settings
 
 home_zip = "98024"        # Fall City, WA
-radius_miles = 50
+home_name = "Fall City, WA"
+radius_miles = 50         # default radius on the website, and the radius for the email
+site_max_radius = 150     # largest radius you can pick on the website
 
 # Units whose contents mention any of these get a highlight tag in the digest.
 keywords = [
