@@ -9,8 +9,9 @@ WATCHED = [
     {
         "name": "StorageTreasures Live (in-person) auctions",
         "url": "https://www.storagetreasures.com/live-auctions/wa",
-        "pattern": r"Total Auctions:\s*([\d,]+)",
-        "wait_ms": 6_000,
+        # The "Total Auctions" number can include other states, so count WA listings instead.
+        "count_wa": True,
+        "wait_ms": 8_000,
     },
     {
         "name": "iBid4Storage",
@@ -19,6 +20,11 @@ WATCHED = [
         "wait_ms": 3_000,
     },
 ]
+
+
+def count_wa(text: str) -> int:
+    """Number of listings whose location line ends in ', WA'."""
+    return len(re.findall(r",\s*WA\b(?!\w)", text))
 
 
 def count(text: str, pattern: str) -> int | None:
@@ -33,7 +39,8 @@ def check(page) -> list[dict]:
         try:
             page.goto(w["url"], wait_until="domcontentloaded", timeout=60_000)
             page.wait_for_timeout(w["wait_ms"])
-            n = count(page.inner_text("body"), w["pattern"])
+            text = page.inner_text("body")
+            n = count_wa(text) if w.get("count_wa") else count(text, w["pattern"])
         except Exception as e:  # never let a watched site break the run
             print(f"watch {w['name']}: {type(e).__name__}")
         print(f"watch {w['name']}: {n}")

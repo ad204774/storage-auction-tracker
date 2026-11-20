@@ -90,6 +90,6 @@ def test_site_build(tmp_path):
 
 
 def test_watch_count():
-    from tracker.sources.watch import WATCHED, count
-    assert count("Live Auctions Search Results\nTotal Auctions: 0\n", WATCHED[0]["pattern"]) == 0
+    from tracker.sources.watch import WATCHED, count, count_wa
+    assert count_wa("Live Auctions in Washington\nTotal Auctions: 20\nAustin, TX\nKent, WA\nTacoma, WA 98402\n") == 2
     assert count("Showing  1-10 of 1,234 active auctions near washington", WATCHED[1]["pattern"]) == 1234
