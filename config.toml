@@ -4,6 +4,7 @@ home_zip = "98024"        # Fall City, WA
 home_name = "Fall City, WA"
 radius_miles = 50         # default radius on the website, and the radius for the email
 site_max_radius = 150     # largest radius you can pick on the website
+notes_url = "https://script.google.com/macros/s/AKfycbzeshCW9n6RtZ73NzAN-fgs5-pswrha4Ykkk_Z4SSVfJkN7h7_081KgWETBdcsohbNH/exec"   # shared stars/notes (Google Apps Script, see extras/shared-notes.gs)
 
 # Units whose contents mention any of these get a highlight tag in the digest.
 keywords = [
