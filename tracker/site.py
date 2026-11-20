@@ -572,7 +572,13 @@ function setup() {
       const code = $("tcode").value.trim(), name = $("tname").value.trim();
       if (!code || !name) return;
       LS.set("ll_team", code); LS.set("ll_name", name);
-      await NOTES.load(); if (NOTES.status) LS.set("ll_team", "");
+      const mine = NOTES.data;
+      await NOTES.load();
+      if (NOTES.status) LS.set("ll_team", "");
+      else for (const [id, x] of Object.entries(mine)) {  // bring notes made before joining
+        if (NOTES.data[id] || !x.snap) continue;
+        NOTES.save({id, ...x.snap}, {star: x.star, note: x.note});
+      }
       teambar(); render(true);
     } else if (e.target.id === "tleave") { LS.set("ll_team", ""); NOTES.status = ""; teambar(); }
   });
