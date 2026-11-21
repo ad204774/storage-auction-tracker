@@ -14573,7 +14573,7 @@
   "address": null,
   "unit_size": "10 x 15",
   "contents": "Furniture! Tools!, Bedding / Clothing, Boxes / Bags / Totes, Furniture",
-  "current_bid": 200.0,
+  "current_bid": 210.0,
   "ends_at": "2026-11-25T04:30:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/7/4/0/4/8/thumb.jpg",
   "lat": 47.5865,
@@ -25636,7 +25636,13 @@
   "distance_mi": 95.1,
   "first_seen": "2026-11-20T05:36+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/4/8/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/4/8/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/4/8/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/4/8/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/4/9/0/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25657,7 +25663,15 @@
   "distance_mi": 95.1,
   "first_seen": "2026-11-20T05:36+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/9/7/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/9/7/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/9/7/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/9/7/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/9/8/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/9/8/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/2/9/9/8/2/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25678,7 +25692,17 @@
   "distance_mi": 90.4,
   "first_seen": "2026-11-20T05:36+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/5/7/9/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/5/7/9/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/5/7/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/5/7/9/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/5/7/9/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/5/7/9/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/5/7/9/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/5/7/9/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/5/7/9/8/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25701,7 +25725,23 @@
   "tags": [
    "bike"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/3/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/3/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/3/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/3/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/4/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/5/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/5/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/5/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/5/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/6/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/6/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/6/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/7/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/7/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/3/8/8/6/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25722,7 +25762,19 @@
   "distance_mi": 20.2,
   "first_seen": "2026-11-20T00:04+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/6/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/6/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/6/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/6/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/6/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/6/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/7/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/7/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/7/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/7/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/8/7/4/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25745,7 +25797,30 @@
   "tags": [
    "tool box"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/8/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/8/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/8/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/8/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/8/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/4/9/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/5/0/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/5/0/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/5/0/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/5/0/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/5/0/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/5/0/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/5/0/8/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25766,7 +25841,14 @@
   "distance_mi": 16.8,
   "first_seen": "2026-11-20T00:04+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/6/1/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/6/1/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/6/1/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/6/1/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/6/1/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/4/6/1/7/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25787,7 +25869,15 @@
   "distance_mi": 16.8,
   "first_seen": "2026-11-20T00:04+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/6/0/0/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/6/0/0/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/6/0/0/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/6/0/1/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/6/0/1/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/6/0/1/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/6/0/1/3/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25808,7 +25898,19 @@
   "distance_mi": 16.8,
   "first_seen": "2026-11-20T00:04+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/8/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/2/9/9/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25829,7 +25931,25 @@
   "distance_mi": 20.2,
   "first_seen": "2026-11-20T00:04+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/8/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/9/9/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/0/0/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/0/0/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/0/0/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/0/0/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/0/0/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/6/0/0/5/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25850,7 +25970,26 @@
   "distance_mi": 20.2,
   "first_seen": "2026-11-20T00:04+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/2/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/2/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/2/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/3/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/3/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/3/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/3/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/3/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/3/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/4/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/4/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/4/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/4/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/4/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/4/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/5/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/5/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/3/5/8/5/4/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25874,7 +26013,26 @@
    "tools",
    "compressor"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/0/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/0/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/0/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/0/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/0/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/0/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/0/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/0/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/0/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/1/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/1/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/1/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/1/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/1/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/1/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/1/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/1/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/1/8/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25895,7 +26053,13 @@
   "distance_mi": 120.2,
   "first_seen": "2026-11-20T05:36+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/9/1/2/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/9/1/2/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/9/1/2/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/9/1/2/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/6/9/1/2/5/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25916,7 +26080,11 @@
   "distance_mi": 16.8,
   "first_seen": "2026-11-20T00:04+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/3/8/5/5/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/3/8/5/5/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/3/8/5/5/2/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25937,7 +26105,15 @@
   "distance_mi": 27.6,
   "first_seen": "2026-11-20T00:04+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/2/3/1/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/2/3/1/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/2/3/1/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/2/3/1/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/2/3/1/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/2/3/2/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/2/3/2/1/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25958,7 +26134,16 @@
   "distance_mi": 86.0,
   "first_seen": "2026-11-20T05:36+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/4/8/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/4/8/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/4/8/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/4/8/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/4/8/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/4/9/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/4/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/4/9/4/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -25981,7 +26166,21 @@
   "tags": [
    "tv"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/6/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/6/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/6/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/6/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/6/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/6/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/6/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/7/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/7/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/7/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/7/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/7/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/5/5/5/7/5/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -26004,7 +26203,17 @@
   "tags": [
    "tool box"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/6/9/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/6/9/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/6/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/7/0/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/7/0/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/7/0/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/7/0/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/7/0/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/4/4/7/0/6/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -26025,7 +26234,18 @@
   "distance_mi": 34.3,
   "first_seen": "2026-11-20T05:36+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/8/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/8/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/8/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/8/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/9/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/9/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/9/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/9/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/1/9/5/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -26049,7 +26269,28 @@
    "compressor",
    "bike"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/7/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/7/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/7/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/7/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/7/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/7/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/8/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/8/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/8/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/8/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/8/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/8/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/8/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/9/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/9/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/9/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/9/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/9/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/0/9/6/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -26072,7 +26313,16 @@
   "tags": [
    "tv"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/5/2/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/5/2/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/5/2/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/5/2/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/5/2/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/5/3/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/5/3/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/8/1/5/3/2/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
