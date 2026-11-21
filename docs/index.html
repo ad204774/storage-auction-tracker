@@ -320,6 +320,7 @@ function readState() {
   $("photoonly").checked = p.get("ph") === "1";
   $("watchonly").checked = p.get("w") === "1";
   $("mode").value = p.get("m") || "";
+  if (p.get("m") === "done" && !p.get("sort")) { sortKey = "end"; sortDir = -1; }
   $("showskip").checked = p.get("sk") === "1";
   tags = new Set((p.get("t") || "").split(",").filter(Boolean));
   if (p.get("sort")) { const [k, d] = p.get("sort").split(":"); sortKey = k; sortDir = +d || 1; }
@@ -341,7 +342,7 @@ function writeState() {
   if ($("mode").value) p.set("m", $("mode").value);
   if ($("showskip").checked) p.set("sk", "1");
   if (tags.size) p.set("t", [...tags].join(","));
-  if (!(sortKey === "end" && sortDir === 1)) p.set("sort", sortKey + ":" + sortDir);
+  if (!(sortKey === "end" && sortDir === ($("mode").value === "done" ? -1 : 1))) p.set("sort", sortKey + ":" + sortDir);
   history.replaceState(null, "", p.toString() ? "#" + p : location.pathname);
 }
 
