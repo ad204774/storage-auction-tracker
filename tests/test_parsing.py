@@ -124,3 +124,18 @@ def test_site_writes_sold(tmp_path):
     import json
     d = json.loads((tmp_path / "sold.json").read_text())
     assert d["auctions"][0]["sold"] == 820.0 and d["auctions"][0]["done"]
+
+
+def test_store_records_bid_before_close():
+    from datetime import datetime, timedelta, timezone
+    from tracker.models import Auction
+    from tracker.pipeline import Store
+    import tempfile, pathlib
+    now = datetime(2026, 11, 20, 12, tzinfo=timezone.utc)
+    st = Store(pathlib.Path(tempfile.mkdtemp()) / "seen.json")
+    a = Auction("storagetreasures", "9", "u", "F", "Kent", "WA", current_bid=40.0, ends_at=now + timedelta(hours=30))
+    st.update([a], now=now)
+    a2 = Auction("storagetreasures", "9", "u", "F", "Kent", "WA", current_bid=90.0, ends_at=now + timedelta(hours=30))
+    st.update([a2], now=now + timedelta(hours=20))  # 10 h left
+    v = st.seen[a.key]
+    assert v["bid24"] == 40.0 and v["bid8"] == 90.0

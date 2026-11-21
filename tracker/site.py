@@ -67,6 +67,7 @@ def build(out_dir: Path, auctions: list[Auction], new: list[Auction], cfg: dict,
         if rec.get("lat") is None or not (rec.get("final") is not None or rec.get("canceled")):
             continue
         r = _row(Auction.from_dict({k: v for k, v in rec.items() if k in fields}), set())
+        r.update(b24=rec.get("bid24"), b8=rec.get("bid8"))
         r.update(sold=rec.get("final"), nbids=rec.get("nbids"), canceled=bool(rec.get("canceled")), done=True, new=False)
         sold_rows.append(r)
     (out_dir / "sold.json").write_text(json.dumps({"updated": now.isoformat(timespec="minutes"), "auctions": sold_rows},
@@ -490,7 +491,7 @@ function render(force) {
   $("sortsel").value = sortKey + ":" + sortDir;
 
   const nNew = list.filter(a => a.new).length;
-  $("count").textContent = done ? `${list.length.toLocaleString()} completed auctions within ${r} mi of ${center.n} (last ${SOLD_DAYS} days)` + (list.length ? ` · median final price $${median(list.map(a => a.sold).filter(x => x != null)).toLocaleString()}` : "")
+  $("count").textContent = done ? `${list.length.toLocaleString()} completed auctions within ${r} mi of ${center.n} (last ${SOLD_DAYS} days)` + (list.length ? ` · median final price $${median(list.map(a => a.sold).filter(x => x != null)).toLocaleString()}` + multStats(list) : "")
     : watchonly ? `${list.length.toLocaleString()} watched auction${list.length === 1 ? "" : "s"} (any distance)`
     : `${list.length.toLocaleString()} auctions within ${r} mi of ${center.n}` + (nNew ? ` · ${nNew} new in the last 24 hrs` : "") + (nSkipped ? ` · ${nSkipped} skipped (hidden)` : "");
   const html = list.slice(0, shown).map(a => {
@@ -516,7 +517,7 @@ function render(force) {
       <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.fac)}: open this auction">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
       <td class="sz" data-l="Size">${esc(a.size || "")}</td>
       <td>${ended ? '<span class="badge" style="background:var(--muted);color:#fff">ENDED</span>' : ""}${badges}${highlight(a.txt || "", groups)}<div class="notecell">${note}${n.note ? "" : send}</div>${n.note ? `<div>${send.replace('class="send"', 'class="send" style="margin-left:0"')}</div>` : ""}</td>
-      <td class="num" data-l="${a.done ? "Final" : "Bid"}">${a.done ? (a.canceled ? '<span class="meta">canceled</span>' : `<b>$${(a.sold ?? 0).toLocaleString()}</b><div class="meta">final${a.nbids != null ? " · " + a.nbids + " bids" : ""}</div>`) : (a.bid != null ? "$" + a.bid.toLocaleString() : "")}${skip}</td>
+      <td class="num" data-l="${a.done ? "Final" : "Bid"}">${a.done ? (a.canceled ? '<span class="meta">canceled</span>' : `<b>$${(a.sold ?? 0).toLocaleString()}</b><div class="meta">final${a.nbids != null ? " · " + a.nbids + " bids" : ""}</div>${jump(a)}`) : (a.bid != null ? "$" + a.bid.toLocaleString() : "")}${skip}</td>
     </tr>`;
   }).join("");
   $("rows").innerHTML = html || '<tr><td colspan="7" style="padding:24px;text-align:center;color:var(--muted)">No auctions match. Try widening the radius or clearing filters.</td></tr>';
@@ -551,6 +552,15 @@ function loadSold() {
     .then(d => { SOLD = d; render(true); })
     .catch(() => { SOLD = {auctions: []}; render(true); })
     .finally(() => { soldLoading = false; });
+}
+function jump(a) {
+  const row = (label, b) => b != null ? `<div class="meta" title="Highest bid we saw ${label} before closing">${label} before: $${b.toLocaleString()}${b > 0 && a.sold ? ` <b>(${(a.sold / b).toFixed(1)}×)</b>` : ""}</div>` : "";
+  return row("24 hr", a.b24) + row("8 hr", a.b8);
+}
+function multStats(list) {
+  const m = k => { const xs = list.filter(a => a[k] > 0 && a.sold).map(a => a.sold / a[k]); return xs.length ? (xs.sort((x, y) => x - y)[xs.length >> 1]).toFixed(1) + "× the " + (k === "b24" ? "24-hr" : "8-hr") + " bid (" + xs.length + ")" : ""; };
+  const parts = [m("b24"), m("b8")].filter(Boolean);
+  return parts.length ? " · finals typically " + parts.join(", ") : "";
 }
 function median(xs) {
   if (!xs.length) return 0;

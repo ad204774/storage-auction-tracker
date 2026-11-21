@@ -63,7 +63,19 @@ class Store:
             else:
                 a.first_seen = now.isoformat(timespec="minutes")
                 new.append(a)
-            self.seen[a.key] = a.to_dict()
+            d = a.to_dict()
+            # Remember the bid at fixed points before closing (24 h and 8 h), to compare with the final price.
+            for k in ("bid24", "bid24_at", "bid8", "bid8_at"):
+                if prev and k in prev:
+                    d[k] = prev[k]
+            if a.ends_at and a.current_bid is not None:
+                hours_left = (a.ends_at - now).total_seconds() / 3600
+                stamp = now.isoformat(timespec="minutes")
+                if hours_left >= 24:
+                    d["bid24"], d["bid24_at"] = a.current_bid, stamp
+                if hours_left >= 8:
+                    d["bid8"], d["bid8_at"] = a.current_bid, stamp
+            self.seen[a.key] = d
         if first_run:
             new = []  # everything would be "new" on the first run; don't flag any of it
         # Forget auctions that ended more than 30 days ago.
