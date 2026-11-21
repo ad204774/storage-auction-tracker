@@ -67,7 +67,7 @@ def build(out_dir: Path, auctions: list[Auction], new: list[Auction], cfg: dict,
         if rec.get("lat") is None or not (rec.get("final") is not None or rec.get("canceled")):
             continue
         r = _row(Auction.from_dict({k: v for k, v in rec.items() if k in fields}), set())
-        r.update(b24=rec.get("bid24"), b8=rec.get("bid8"))
+        r.update(b24=rec.get("bid24"), b8=rec.get("bid8"), b3=rec.get("bid3"), b1=rec.get("bid1"))
         r.update(sold=rec.get("final"), nbids=rec.get("nbids"), canceled=bool(rec.get("canceled")), done=True, new=False)
         sold_rows.append(r)
     (out_dir / "sold.json").write_text(json.dumps({"updated": now.isoformat(timespec="minutes"), "auctions": sold_rows},

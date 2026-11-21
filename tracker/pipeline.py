@@ -40,6 +40,9 @@ def dedupe(auctions: list[Auction]) -> list[Auction]:
     return list(out.values())
 
 
+BID_POINTS = (24, 8, 3, 1)  # hours before close at which we remember the bid
+
+
 class Store:
     """Keeps a small JSON file of every auction seen, so the digest can say what's new."""
 
@@ -65,16 +68,16 @@ class Store:
                 new.append(a)
             d = a.to_dict()
             # Remember the bid at fixed points before closing (24 h and 8 h), to compare with the final price.
-            for k in ("bid24", "bid24_at", "bid8", "bid8_at"):
-                if prev and k in prev:
-                    d[k] = prev[k]
+            for h in BID_POINTS:
+                for k in (f"bid{h}", f"bid{h}_at"):
+                    if prev and k in prev:
+                        d[k] = prev[k]
             if a.ends_at and a.current_bid is not None:
                 hours_left = (a.ends_at - now).total_seconds() / 3600
                 stamp = now.isoformat(timespec="minutes")
-                if hours_left >= 24:
-                    d["bid24"], d["bid24_at"] = a.current_bid, stamp
-                if hours_left >= 8:
-                    d["bid8"], d["bid8_at"] = a.current_bid, stamp
+                for h in BID_POINTS:
+                    if hours_left >= h:
+                        d[f"bid{h}"], d[f"bid{h}_at"] = a.current_bid, stamp
             self.seen[a.key] = d
         if first_run:
             new = []  # everything would be "new" on the first run; don't flag any of it
