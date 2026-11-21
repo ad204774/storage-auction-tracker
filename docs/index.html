@@ -140,6 +140,9 @@ td.sz{white-space:nowrap}
     <div id="filters">
     <div class="help">Search matches all words. Use "quotes" for an exact phrase, -word to exclude, and OR between alternatives. It looks at contents, facility, city and size.</div>
     <div class="row" style="margin-top:10px">
+      <label>Show
+        <select id="mode"><option value="">Open auctions</option><option value="done">Completed (final prices)</option></select>
+      </label>
       <label>Ends within
         <select id="ends"><option value="">Any time</option><option value="6">6 hours</option><option value="24">24 hours</option><option value="48">48 hours</option><option value="168">7 days</option></select>
       </label>
@@ -316,6 +319,7 @@ function readState() {
   $("newonly").checked = p.get("new") === "1";
   $("photoonly").checked = p.get("ph") === "1";
   $("watchonly").checked = p.get("w") === "1";
+  $("mode").value = p.get("m") || "";
   $("showskip").checked = p.get("sk") === "1";
   tags = new Set((p.get("t") || "").split(",").filter(Boolean));
   if (p.get("sort")) { const [k, d] = p.get("sort").split(":"); sortKey = k; sortDir = +d || 1; }
@@ -334,6 +338,7 @@ function writeState() {
   if ($("newonly").checked) p.set("new", "1");
   if ($("photoonly").checked) p.set("ph", "1");
   if ($("watchonly").checked) p.set("w", "1");
+  if ($("mode").value) p.set("m", $("mode").value);
   if ($("showskip").checked) p.set("sk", "1");
   if (tags.size) p.set("t", [...tags].join(","));
   if (!(sortKey === "end" && sortDir === 1)) p.set("sort", sortKey + ":" + sortDir);
@@ -352,9 +357,13 @@ function render(force) {
 
   let list = [];
   const liveIds = new Set();
-  for (const a of D.auctions) {
+  const done = $("mode").value === "done";
+  if (done && !SOLD) { loadSold(); $("rows").innerHTML = '<tr><td colspan="7" style="padding:24px;text-align:center;color:var(--muted)">Loading completed auctions…</td></tr>'; return; }
+  const source = done ? SOLD.auctions : watchonly && SOLD ? D.auctions.concat(SOLD.auctions) : D.auctions;
+  for (const a of source) {
     liveIds.add(a.id);
-    if (a.end && new Date(a.end) <= now && !(watchonly && NOTES.get(a.id).star)) continue;
+    if (!done && !a.done && a.end && new Date(a.end) <= now && !(watchonly && NOTES.get(a.id).star)) continue;
+    if (!done && a.done && !(watchonly && NOTES.get(a.id).star)) continue;
     a.dist = miles(center.lat, center.lon, a.lat, a.lon);
     if (NOTES.get(a.id).skip && !showskip) { if (a.dist <= r) nSkipped++; continue; }
     if (watchonly) { if (NOTES.get(a.id).star && (!groups.length || matches(groups, [a.txt, a.fac, a.city, a.size, NOTES.get(a.id).note].join(" ").toLowerCase()))) list.push(a); continue; }
@@ -362,8 +371,9 @@ function render(force) {
     if (src && a.src !== src) continue;
     if (newonly && !a.new) continue;
     if (photo && !a.img) continue;
-    if (maxbid !== null && (a.bid ?? 0) > maxbid) continue;
-    if (ends && (!a.end || new Date(a.end) - now > ends * 36e5)) continue;
+    if (maxbid !== null && ((done ? a.sold : a.bid) ?? 0) > maxbid) continue;
+    if (ends && !done && (!a.end || new Date(a.end) - now > ends * 36e5)) continue;
+    if (ends && done && (!a.end || now - new Date(a.end) > ends * 36e5)) continue;
     a.sqft = sqft(a.size);
     if (size === "s" && !(a.sqft && a.sqft <= 50)) continue;
     if (size === "m" && !(a.sqft && a.sqft > 50 && a.sqft <= 150)) continue;
@@ -384,10 +394,13 @@ function render(force) {
   const val = a => sortKey === "end" ? (a.end ? Date.parse(a.end) : Infinity)
     : sortKey === "new" ? (a.new ? 1 : 0)
     : sortKey === "watch" ? (NOTES.get(a.id).star ? 1 : 0)
+    : sortKey === "bid" && a.done ? (a.sold ?? (sortDir > 0 ? Infinity : -Infinity))
     : sortKey === "fac" || sortKey === "txt" ? String(a[sortKey] || "").toLowerCase()
     : (a[sortKey] ?? (sortDir > 0 ? Infinity : -Infinity));
   list.sort((x, y) => { const a = val(x), b = val(y); return (a < b ? -1 : a > b ? 1 : 0) * sortDir || x.dist - y.dist; });
 
+  document.querySelector('th[data-k="end"]').firstChild.textContent = done ? "Ended " : "Ends ";
+  document.querySelector('th[data-k="bid"]').firstChild.textContent = done ? "Final " : "Bid ";
   document.querySelectorAll("th[data-k]").forEach(th => {
     const on = th.dataset.k === sortKey;
     th.classList.toggle("sorted", on);
@@ -396,7 +409,8 @@ function render(force) {
   $("sortsel").value = sortKey + ":" + sortDir;
 
   const nNew = list.filter(a => a.new).length;
-  $("count").textContent = watchonly ? `${list.length.toLocaleString()} watched auction${list.length === 1 ? "" : "s"} (any distance)`
+  $("count").textContent = done ? `${list.length.toLocaleString()} completed auctions within ${r} mi of ${center.n} (last ${SOLD_DAYS} days)` + (list.length ? ` · median final price $${median(list.map(a => a.sold).filter(x => x != null)).toLocaleString()}` : "")
+    : watchonly ? `${list.length.toLocaleString()} watched auction${list.length === 1 ? "" : "s"} (any distance)`
     : `${list.length.toLocaleString()} auctions within ${r} mi of ${center.n}` + (nNew ? ` · ${nNew} new in the last 24 hrs` : "") + (nSkipped ? ` · ${nSkipped} skipped (hidden)` : "");
   const html = list.slice(0, shown).map(a => {
     const soon = a.end && new Date(a.end) - now < 6 * 36e5;
@@ -404,8 +418,8 @@ function render(force) {
     const photoCell = a.img
       ? `<img class="thumb" loading="lazy" src="${esc(a.img)}" data-big="${esc(a.big || a.img)}" data-i="${esc(a.id)}" alt="Unit photo">${(a.pics || []).length > 1 ? `<div class="pics">📷 ${a.pics.length}</div>` : ""}`
       : `<a class="nophoto" href="${esc(a.url)}" target="_blank" rel="noopener">See listing</a>`;
-    const ended = a.ended || (a.end && new Date(a.end) <= now);
-    const closing = !ended && a.end && new Date(a.end) - now < 36e5;
+    const ended = !done && (a.ended || a.done || (a.end && new Date(a.end) <= now));
+    const closing = !done && !ended && a.end && new Date(a.end) - now < 36e5;
     const n = NOTES.get(a.id);
     const star = `<button class="star${n.star ? " on" : ""}" data-star="${esc(a.id)}" title="${n.star ? "Stop watching" : "Watch this auction"}" aria-label="Watch">${n.star ? "★" : "☆"}</button>`;
     const note = n.note
@@ -421,7 +435,7 @@ function render(force) {
       <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.fac)}: open this auction">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
       <td class="sz" data-l="Size">${esc(a.size || "")}</td>
       <td>${ended ? '<span class="badge" style="background:var(--muted);color:#fff">ENDED</span>' : ""}${badges}${highlight(a.txt || "", groups)}<div class="notecell">${note}${n.note ? "" : send}</div>${n.note ? `<div>${send.replace('class="send"', 'class="send" style="margin-left:0"')}</div>` : ""}</td>
-      <td class="num" data-l="Bid">${a.bid != null ? "$" + a.bid.toLocaleString() : ""}${skip}</td>
+      <td class="num" data-l="${a.done ? "Final" : "Bid"}">${a.done ? (a.canceled ? '<span class="meta">canceled</span>' : `<b>$${(a.sold ?? 0).toLocaleString()}</b><div class="meta">final${a.nbids != null ? " · " + a.nbids + " bids" : ""}</div>`) : (a.bid != null ? "$" + a.bid.toLocaleString() : "")}${skip}</td>
     </tr>`;
   }).join("");
   $("rows").innerHTML = html || '<tr><td colspan="7" style="padding:24px;text-align:center;color:var(--muted)">No auctions match. Try widening the radius or clearing filters.</td></tr>';
@@ -447,6 +461,21 @@ function toast(msg, undo) {
   if (undo) t.querySelector("button").onclick = () => { t.style.display = "none"; undo(); };
   t.style.display = "block";
   clearTimeout(toast.t); toast.t = setTimeout(() => { t.style.display = "none"; }, 6000);
+}
+
+let SOLD = null, SOLD_DAYS = 60, soldLoading = false;
+function loadSold() {
+  if (soldLoading) return; soldLoading = true;
+  fetch("sold.json?t=" + Date.now(), {cache: "no-store"}).then(r => r.json())
+    .then(d => { SOLD = d; render(true); })
+    .catch(() => { SOLD = {auctions: []}; render(true); })
+    .finally(() => { soldLoading = false; });
+}
+function median(xs) {
+  if (!xs.length) return 0;
+  xs = xs.slice().sort((a, b) => a - b);
+  const m = xs.length >> 1;
+  return Math.round(xs.length % 2 ? xs[m] : (xs[m - 1] + xs[m]) / 2);
 }
 
 function rerender() { shown = PAGE; render(); }
@@ -485,6 +514,13 @@ function setup() {
 
   let t;
   $("search").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 200); });
+  $("mode").addEventListener("change", () => {
+    const d = $("mode").value === "done";
+    if (d) { sortKey = "end"; sortDir = -1; } else { sortKey = "end"; sortDir = 1; }
+    $("ends").options[0].textContent = "Any time";
+    [...$("ends").options].slice(1).forEach(o => o.textContent = (d ? "Last " : "") + o.textContent.replace(/^Last /, ""));
+    rerender();
+  });
   ["radius", "ends", "size", "src", "newonly", "photoonly", "watchonly", "showskip"].forEach(id => $(id).addEventListener("change", rerender));
   $("maxbid").addEventListener("input", () => { clearTimeout(t); t = setTimeout(rerender, 300); });
   $("center").addEventListener("change", () => {

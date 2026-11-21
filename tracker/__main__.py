@@ -10,7 +10,7 @@ import tomllib
 import traceback
 from pathlib import Path
 
-from . import digest, site
+from . import digest, site, sold as sold_mod
 from .pipeline import Store, dedupe, filter_nearby, tag_keywords
 from .sources import bid13, storagetreasures, watch
 
@@ -87,6 +87,13 @@ def main(argv: list[str] | None = None) -> int:
         # Photos need one visit per auction page, so do a limited batch each run (closest-ending first)
         # and remember them in data/seen.json.
         _add_photos(photo_page, collected, cfg)
+        # Completed auctions: read the final price off each recently ended auction's page.
+        try:
+            sold = sold_mod.update(page, Store(ROOT / "data" / "seen.json").seen, ROOT / "data" / "sold.json",
+                                   limit=int(cfg.get("sold_pages_per_run", 40)))
+        except Exception:
+            traceback.print_exc()
+            sold = {}
         browser.close()
 
     auctions = dedupe(collected)
@@ -111,7 +118,7 @@ def main(argv: list[str] | None = None) -> int:
             return False
         seen = datetime.fromisoformat(a.first_seen)
         return now - seen < timedelta(hours=24) and (not started or seen - datetime.fromisoformat(started) > timedelta(hours=1))
-    site.build(Path(args.out), wide, [a for a in wide if recent(a)], cfg, errors, watched=watched)
+    site.build(Path(args.out), wide, [a for a in wide if recent(a)], cfg, errors, watched=watched, sold=sold)
 
     # The email sticks to the default home + radius.
     nearby = [a for a in wide if a.distance_mi <= cfg["radius_miles"]]

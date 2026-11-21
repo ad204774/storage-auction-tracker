@@ -103,3 +103,24 @@ def test_storagetreasures_photos():
             + f'</div><div class="image-gallery-thumbnail-inner"><img class="image-gallery-thumbnail-image" src="{base}5/giant.jpg"></div>'
             + f'<div class="related"><img src="{base}9/thumb.jpg"></div>')
     assert storagetreasures.parse_photos(html) == [f"{base}{i}/giant.jpg" for i in (5, 6, 7)]
+
+
+def test_sold_parse_final():
+    from tracker.sold import parse_final
+    st = "Unit Appears to Contain:\nTools!\nFinal High Bid:\n$8,340\nSoft Close Activated\nAuction ended on\nNov 20\nBids on this unit: 27"
+    assert parse_final(st)["final"] == 8340 and parse_final(st)["nbids"] == 27
+    b13 = "Unit 271\nFINAL PRICE\n$491\n \nHIGH BIDDER\nR*******g\nENDED"
+    assert parse_final(b13)["final"] == 491
+    assert parse_final("Current bid $40 ends in 3 hours").get("final") is None
+
+
+def test_site_writes_sold(tmp_path):
+    from tracker import site
+    from tracker.models import Auction
+    a = Auction("storagetreasures", "1", "https://x/1", "Fac", "Seattle", "WA", lat=47.6, lon=-122.3)
+    rec = dict(a.to_dict(), final=820.0, nbids=27, tries=1)
+    cfg = {"home_zip": "98024", "radius_miles": 50}
+    site.build(tmp_path, [], [], cfg, [], sold={a.key: rec})
+    import json
+    d = json.loads((tmp_path / "sold.json").read_text())
+    assert d["auctions"][0]["sold"] == 820.0 and d["auctions"][0]["done"]
