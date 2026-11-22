@@ -524,7 +524,7 @@
   "address": null,
   "unit_size": "10 x 10",
   "contents": "Bedding / Clothing, Boxes / Bags / Totes, Furniture",
-  "current_bid": 10.0,
+  "current_bid": 20.0,
   "ends_at": "2026-11-22T18:30:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/1/0/8/4/6/thumb.jpg",
   "lat": 45.6544,
@@ -782,7 +782,7 @@
   "address": null,
   "unit_size": "5 x 15",
   "contents": "Appliances, Bedding / Clothing, Boxes / Bags / Totes, Electronics / Computers, Furniture, Tools",
-  "current_bid": 20.0,
+  "current_bid": 40.0,
   "ends_at": "2026-11-22T18:50:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/1/0/9/7/0/thumb.jpg",
   "lat": 45.6544,
@@ -1018,7 +1018,7 @@
   "address": null,
   "unit_size": "10 x 10",
   "contents": "Mini fridge, PC tower, car speakers, Appliances, Bedding / Clothing, Boxes / Bags / Totes, Electroni...",
-  "current_bid": 20.0,
+  "current_bid": 30.0,
   "ends_at": "2026-11-22T19:15:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/4/4/5/3/2/thumb.jpg",
   "lat": 45.6544,
@@ -1081,7 +1081,7 @@
   "address": null,
   "unit_size": "7 x 10",
   "contents": "New subwoofer speakers, Boxes / Bags / Totes, Electronics / Computers, Furniture",
-  "current_bid": 40.0,
+  "current_bid": 60.0,
   "ends_at": "2026-11-22T19:25:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/4/4/5/5/9/thumb.jpg",
   "lat": 45.6544,
@@ -1685,7 +1685,7 @@
   "address": null,
   "unit_size": "5 x 10",
   "contents": "Bedding / Clothing, Boxes / Bags / Totes, Electronics / Computers",
-  "current_bid": 60.0,
+  "current_bid": 80.0,
   "ends_at": "2026-11-22T20:00:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/5/0/7/3/9/thumb.jpg",
   "lat": 45.6544,
@@ -1717,7 +1717,7 @@
   "address": null,
   "unit_size": "10 x 5",
   "contents": "Slot machines x2, Electronics / Computers",
-  "current_bid": 20.0,
+  "current_bid": 30.0,
   "ends_at": "2026-11-22T20:05:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/1/4/6/0/4/thumb.jpg",
   "lat": 45.6544,
@@ -2260,7 +2260,7 @@
   "address": null,
   "unit_size": "5 x 10",
   "contents": "Boxes / Bags / Totes",
-  "current_bid": 70.0,
+  "current_bid": 110.0,
   "ends_at": "2026-11-23T03:00:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/6/9/2/7/thumb.jpg",
   "lat": 47.3813,
@@ -2835,7 +2835,7 @@
   "address": null,
   "unit_size": "5 x 10",
   "contents": "Bedding / Clothing, Boxes / Bags / Totes, Electronics / Computers, Furniture",
-  "current_bid": 20.0,
+  "current_bid": 40.0,
   "ends_at": "2026-11-23T03:20:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/6/9/7/1/thumb.jpg",
   "lat": 47.3813,
@@ -3679,7 +3679,7 @@
   "address": null,
   "unit_size": "10 x 15",
   "contents": "pallet jack, toys, cabinets, tools, totes, electric fireplace, holiday decorations, art work, vendin...",
-  "current_bid": 310.0,
+  "current_bid": 320.0,
   "ends_at": "2026-11-23T19:00:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/6/0/4/5/thumb.jpg",
   "lat": 47.3148,
@@ -4368,7 +4368,7 @@
   "address": null,
   "unit_size": "5 x 10",
   "contents": "Bedding / Clothing, Boxes / Bags / Totes",
-  "current_bid": 40.0,
+  "current_bid": 100.0,
   "ends_at": "2026-11-23T21:00:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/4/1/7/0/0/thumb.jpg",
   "lat": 47.5991,
@@ -6964,38 +6964,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6957318",
-  "url": "https://www.storagetreasures.com/auctions/wa/federal%20way/6957318",
-  "facility": "Public Storage 08250 -...",
-  "city": "Federal Way",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 15",
-  "contents": "Boxes / Bags / Totes",
-  "current_bid": 10.0,
-  "ends_at": "2026-11-24T04:40:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/1/3/thumb.jpg",
-  "lat": 47.3148,
-  "lon": -122.2729,
-  "distance_mi": 25.0,
-  "first_seen": "2026-11-20T00:04+00:00",
-  "tags": [],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/1/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/1/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/1/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/1/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/1/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/1/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/2/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/2/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/2/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/7/7/4/2/7/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6955108",
   "url": "https://www.storagetreasures.com/auctions/wa/kent/6955108",
   "facility": "Public Storage 08179 -...",
@@ -7884,7 +7852,7 @@
   "address": null,
   "unit_size": "10 x 10",
   "contents": "Nanuk 963 Car top Cargo, Craftman Wrench/Drill bit set, Shelving, Wall Mirror, Hercules impact drill...",
-  "current_bid": 120.0,
+  "current_bid": 130.0,
   "ends_at": "2026-11-24T05:00:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/0/2/8/2/thumb.jpg",
   "lat": 48.1829,
@@ -11824,7 +11792,7 @@
   "address": null,
   "unit_size": "10 x 20",
   "contents": "You never know what treasures you\u2019ll find! Whether you're furnishing your home, stocking up for summ...",
-  "current_bid": 20.0,
+  "current_bid": 30.0,
   "ends_at": "2026-11-25T04:00:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/9/3/9/2/7/thumb.jpg",
   "lat": 47.0822,
@@ -12295,7 +12263,7 @@
   "address": null,
   "unit_size": "5 x 5",
   "contents": "Bedding / Clothing, Boxes / Bags / Totes",
-  "current_bid": 30.0,
+  "current_bid": 60.0,
   "ends_at": "2026-11-25T04:30:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/2/7/2/1/thumb.jpg",
   "lat": 47.2126,
@@ -29750,7 +29718,11 @@
   "tags": [
    "tv"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/2/8/0/2/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/2/8/0/2/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/2/8/0/2/8/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -29774,7 +29746,14 @@
    "furniture",
    "electronics"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/2/9/9/6/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/2/9/9/6/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/2/9/9/6/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/2/9/9/6/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/2/9/9/7/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/2/9/9/7/1/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -29795,7 +29774,14 @@
   "distance_mi": 20.7,
   "first_seen": "2026-11-21T21:47+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/0/8/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/0/8/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/0/8/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/0/8/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/0/8/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/0/8/9/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -29819,7 +29805,25 @@
    "tools",
    "tv"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/3/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/3/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/3/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/3/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/3/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/4/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/5/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/5/5/1/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -29843,7 +29847,18 @@
    "generator",
    "camping"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/9/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/8/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/8/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/8/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/8/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/9/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/9/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/9/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/3/5/9/4/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -29864,7 +29879,15 @@
   "distance_mi": 63.3,
   "first_seen": "2026-11-20T21:47+00:00",
   "tags": [],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/2/3/7/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/2/3/8/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/2/3/8/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/2/3/8/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/2/3/8/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/2/3/8/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/2/3/8/5/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -29887,7 +29910,13 @@
   "tags": [
    "tv"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/2/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
@@ -29910,7 +29939,12 @@
   "tags": [
    "camping"
   ],
-  "photos": []
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/7/giant.jpg"
+  ]
  },
  {
   "source": "storagetreasures",
