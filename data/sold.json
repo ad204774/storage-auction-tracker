@@ -12074,6 +12074,48 @@
   "url": "https://www.storagetreasures.com/auctions/wa/kent/6988007",
   "zip_code": null
  },
+ "storagetreasures:6988603": {
+  "address": null,
+  "bid1": 10.0,
+  "bid1_at": "2026-11-23T00:47+00:00",
+  "bid24": 10.0,
+  "bid24_at": "2026-11-22T01:47+00:00",
+  "bid3": 10.0,
+  "bid3_at": "2026-11-22T22:47+00:00",
+  "bid8": 10.0,
+  "bid8_at": "2026-11-22T17:47+00:00",
+  "checked": "2026-11-23T02:47+00:00",
+  "city": "Tacoma",
+  "contents": "Bedroom furniture & miscellaneous house hold items.",
+  "current_bid": 10.0,
+  "distance_mi": 36.5,
+  "ended": true,
+  "ends_at": "2026-11-23T02:00:00+00:00",
+  "facility": "Public Storage 78046 -...",
+  "final": 10.0,
+  "first_seen": "2026-11-20T21:47+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/4/4/6/6/thumb.jpg",
+  "lat": 47.2126,
+  "lon": -122.4658,
+  "nbids": 1,
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/4/4/6/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/4/4/6/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/4/4/6/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/4/4/6/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/4/4/7/0/giant.jpg"
+  ],
+  "source": "storagetreasures",
+  "source_id": "6988603",
+  "state": "WA",
+  "tags": [
+   "furniture"
+  ],
+  "tries": 1,
+  "unit_size": "10 x 15",
+  "url": "https://www.storagetreasures.com/auctions/wa/tacoma/6988603",
+  "zip_code": null
+ },
  "storagetreasures:6988850": {
   "address": null,
   "bid1": 10.0,
