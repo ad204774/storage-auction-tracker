@@ -592,7 +592,7 @@
   "address": null,
   "unit_size": "5 x 10",
   "contents": "Boxes / Bags / Totes",
-  "current_bid": 90.0,
+  "current_bid": 110.0,
   "ends_at": "2026-11-24T03:05:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/4/2/0/5/5/thumb.jpg",
   "lat": 47.5991,
@@ -24595,7 +24595,7 @@
   "lat": 47.9376,
   "lon": -122.2165,
   "distance_mi": 29.7,
-  "first_seen": "2026-11-24T01:47+00:00",
+  "first_seen": "2026-11-24T01:53+00:00",
   "tags": [],
   "photos": []
  },
