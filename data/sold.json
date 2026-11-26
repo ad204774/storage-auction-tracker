@@ -23412,7 +23412,7 @@
  },
  "storagetreasures:6957664": {
   "address": null,
-  "checked": "2026-11-25T23:47+00:00",
+  "checked": "2026-11-26T00:43+00:00",
   "city": "Edgewood",
   "contents": "Boxes, totes, movies, large printer, TV, PC monitor box, kids boats, car seat, couch/loveseat, bags,...",
   "current_bid": 20.0,
@@ -23430,7 +23430,7 @@
   "tags": [
    "tv"
   ],
-  "tries": 2,
+  "tries": 3,
   "unit_size": "10 x 15",
   "url": "https://www.storagetreasures.com/auctions/wa/edgewood/6957664",
   "zip_code": null
@@ -23776,6 +23776,74 @@
   "tries": 1,
   "unit_size": "5 x 10",
   "url": "https://www.storagetreasures.com/auctions/wa/lake%20stevens/6958476",
+  "zip_code": null
+ },
+ "storagetreasures:6958500": {
+  "address": null,
+  "bid1": 40.0,
+  "bid1_at": "2026-11-25T21:49+00:00",
+  "bid24": 20.0,
+  "bid24_at": "2026-11-24T22:47+00:00",
+  "bid3": 30.0,
+  "bid3_at": "2026-11-25T19:50+00:00",
+  "bid8": 20.0,
+  "bid8_at": "2026-11-25T14:47+00:00",
+  "checked": "2026-11-26T00:43+00:00",
+  "city": "Edgewood",
+  "contents": "Mini Brands, bike, totes, suitcases, makeup case, battery charger, hat, printer, storage containers,...",
+  "current_bid": 40.0,
+  "distance_mi": 31.6,
+  "ended": false,
+  "ends_at": "2026-11-25T23:30:00+00:00",
+  "facility": "View Pointe Self Stora...",
+  "final": 140.0,
+  "first_seen": "2026-11-20T00:04+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/3/9/thumb.jpg",
+  "lat": 47.2017,
+  "lon": -122.2943,
+  "nbids": 15,
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/3/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/4/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/5/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/8/5/7/6/9/giant.jpg"
+  ],
+  "source": "storagetreasures",
+  "source_id": "6958500",
+  "state": "WA",
+  "tags": [
+   "bike"
+  ],
+  "tries": 1,
+  "unit_size": "10 x 10",
+  "url": "https://www.storagetreasures.com/auctions/wa/edgewood/6958500",
   "zip_code": null
  },
  "storagetreasures:6958532": {
@@ -26774,7 +26842,7 @@
  },
  "storagetreasures:6960571": {
   "address": null,
-  "checked": "2026-11-25T23:47+00:00",
+  "checked": "2026-11-26T00:43+00:00",
   "city": "Dupont",
   "contents": "luggage~ small Refrigerator ~ totes ~Books~Shelving~ Boxes~ Clothing~microwave~ toys~Decorations",
   "current_bid": 10.0,
@@ -26792,7 +26860,7 @@
   "tags": [
    "refrigerator"
   ],
-  "tries": 2,
+  "tries": 3,
   "unit_size": "5 x 15",
   "url": "https://www.storagetreasures.com/auctions/wa/dupont/6960571",
   "zip_code": null
@@ -27819,7 +27887,7 @@
  },
  "storagetreasures:6961674": {
   "address": null,
-  "checked": "2026-11-25T23:47+00:00",
+  "checked": "2026-11-26T00:43+00:00",
   "city": "Marysville",
   "contents": "Tires., Mattress, Vac, Glass Table, Blankets, Wood Chairs, Wood Furniture, Dark Wood Glass Curio Cab...",
   "current_bid": 10.0,
@@ -27838,7 +27906,7 @@
   "tags": [
    "furniture"
   ],
-  "tries": 2,
+  "tries": 3,
   "unit_size": "10 x 10",
   "url": "https://www.storagetreasures.com/auctions/wa/marysville/6961674",
   "zip_code": null
@@ -44020,6 +44088,45 @@
   "tries": 1,
   "unit_size": "5 x 10",
   "url": "https://www.storagetreasures.com/auctions/wa/kent/6998842",
+  "zip_code": null
+ },
+ "storagetreasures:6999197": {
+  "address": null,
+  "bid1": 10.0,
+  "bid1_at": "2026-11-25T21:49+00:00",
+  "bid24": 10.0,
+  "bid24_at": "2026-11-24T23:58+00:00",
+  "bid3": 10.0,
+  "bid3_at": "2026-11-25T20:48+00:00",
+  "bid8": 10.0,
+  "bid8_at": "2026-11-25T15:46+00:00",
+  "checked": "2026-11-26T00:43+00:00",
+  "city": "Federal Way",
+  "contents": "Wooden shelves, board games, ninja blender, toaster, kids basketball hoop, office chair, gas cans",
+  "current_bid": 20.0,
+  "distance_mi": 25.0,
+  "ended": true,
+  "ends_at": "2026-11-26T00:10:00+00:00",
+  "facility": "Public Storage 08250 -...",
+  "final": 30.0,
+  "first_seen": "2026-11-24T00:47+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/7/8/0/5/3/thumb.jpg",
+  "lat": 47.3148,
+  "lon": -122.2729,
+  "nbids": 3,
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/7/8/0/5/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/7/8/0/5/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/7/8/0/5/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/7/8/0/5/6/giant.jpg"
+  ],
+  "source": "storagetreasures",
+  "source_id": "6999197",
+  "state": "WA",
+  "tags": [],
+  "tries": 1,
+  "unit_size": "10 x 15",
+  "url": "https://www.storagetreasures.com/auctions/wa/federal%20way/6999197",
   "zip_code": null
  }
 }
