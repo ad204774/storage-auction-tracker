@@ -33922,7 +33922,7 @@
  },
  "storagetreasures:6969108": {
   "address": null,
-  "checked": "2026-11-26T20:46+00:00",
+  "checked": "2026-11-26T21:43+00:00",
   "city": "Federal Way",
   "contents": "Bags, umbrella, totes, purses, fishing gear, clothes, old items, personals, etc.",
   "current_bid": 10.0,
@@ -33938,7 +33938,7 @@
   "tags": [
    "fishing"
   ],
-  "tries": 2,
+  "tries": 3,
   "unit_size": "5 x 5",
   "url": "https://www.storagetreasures.com/auctions/wa/federal%20way/6969108",
   "zip_code": null
