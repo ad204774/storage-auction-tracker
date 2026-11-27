@@ -1,27 +1,6 @@
 [
  {
   "source": "bid13",
-  "source_id": "337798",
-  "url": "https://bid13.com/node/337798",
-  "facility": "J & J Mini Storage",
-  "city": "Puyallup",
-  "state": "WA",
-  "zip_code": "98372",
-  "address": "11809 valley E ave, puyallup, WA, 98372",
-  "unit_size": "Unit 70",
-  "contents": "Hardware, Drinks",
-  "current_bid": null,
-  "ends_at": "2026-11-26T19:21:00-08:00",
-  "image_url": null,
-  "lat": 47.2042,
-  "lon": -122.2734,
-  "distance_mi": 30.9,
-  "first_seen": "2026-11-19T23:58+00:00",
-  "tags": [],
-  "photos": []
- },
- {
-  "source": "bid13",
   "source_id": "338195",
   "url": "https://bid13.com/node/338195",
   "facility": "Secure It Self Storage @  Cooper Point",
