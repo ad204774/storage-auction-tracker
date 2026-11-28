@@ -70,6 +70,7 @@ td.fac{max-width:240px}
 .note{margin-top:8px;background:#fff8d6;color:#2b2410;border:2px solid #FFC800;border-left-width:6px;border-radius:6px;padding:6px 10px;font-size:13px;white-space:pre-wrap;cursor:text}
 .note::before{content:"📝 MY NOTES";display:block;font-size:10px;font-weight:800;letter-spacing:.08em;color:#8a6a00;margin-bottom:2px}
 .note .who{color:#8a6a00;font-size:11px;display:block;margin-top:3px}
+.est{color:var(--accent);font-weight:600;white-space:nowrap;cursor:help}
 .send{background:none;border:0;padding:0;margin:4px 0 0 10px;color:var(--accent);font-size:12px;cursor:pointer}
 .addnote{background:none;border:0;padding:0;margin-top:4px;color:var(--accent);font-size:12px;cursor:pointer}
 .noteedit textarea{width:100%;min-height:60px;font:inherit;font-size:13px;margin-top:6px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px}
@@ -436,7 +437,7 @@ function render(force) {
       <td class="fac"><a href="${esc(a.url)}" target="_blank" rel="noopener" title="${esc(a.fac)}: open this auction">${esc(a.fac)}</a><div class="meta">${esc(a.city)} · ${SITE[a.src] || esc(a.src)}</div></td>
       <td class="sz" data-l="Size">${esc(a.size || "")}</td>
       <td>${ended ? '<span class="badge" style="background:var(--muted);color:#fff">ENDED</span>' : ""}${badges}${highlight(a.txt || "", groups)}<div class="notecell">${note}${n.note ? "" : send}</div>${n.note ? `<div>${send.replace('class="send"', 'class="send" style="margin-left:0"')}</div>` : ""}</td>
-      <td class="num" data-l="${a.done ? "Final" : "Bid"}">${a.done ? (a.canceled ? '<span class="meta">canceled</span>' : `<b>$${(a.sold ?? 0).toLocaleString()}</b><div class="meta">final${a.nbids != null ? " · " + a.nbids + " bids" : ""}</div>${jump(a)}`) : (a.bid != null ? "$" + a.bid.toLocaleString() : "")}${skip}</td>
+      <td class="num" data-l="${a.done ? "Final" : "Bid"}">${a.done ? (a.canceled ? '<span class="meta">canceled</span>' : `<b>$${(a.sold ?? 0).toLocaleString()}</b><div class="meta">final${a.nbids != null ? " · " + a.nbids + " bids" : ""}</div>${jump(a)}`) : (a.bid != null ? "$" + a.bid.toLocaleString() + estimate(a, now) : "")}${skip}</td>
     </tr>`;
   }).join("");
   $("rows").innerHTML = html || '<tr><td colspan="7" style="padding:24px;text-align:center;color:var(--muted)">No auctions match. Try widening the radius or clearing filters.</td></tr>';
@@ -471,6 +472,17 @@ function loadSold() {
     .then(d => { SOLD = d; render(true); })
     .catch(() => { SOLD = {auctions: []}; render(true); })
     .finally(() => { soldLoading = false; });
+}
+function estimate(a, now) {
+  if (!a.bid || !a.end || !(D.est || []).length) return "";
+  const left = (new Date(a.end) - now) / 36e5;
+  if (left <= 0) return "";
+  const pts = [...new Set(D.est.map(e => e.h))].sort((x, y) => y - x);   // 24, 8, 3, 1
+  const h = pts.find(p => p <= left) ?? pts[pts.length - 1];
+  const e = D.est.find(e => e.h === h && a.bid >= e.lo && (e.hi == null || a.bid < e.hi));
+  if (!e) return "";
+  const r = x => "$" + (Math.round(a.bid * x / 5) * 5).toLocaleString();
+  return `<div class="meta est" title="Based on ${e.n} finished auctions with a similar bid about ${h} hr before close. Typical range ${r(e.p25)}–${r(e.p75)}.">est. final ≈ ${r(e.med)}</div>`;
 }
 function jump(a) {
   const row = (label, b) => b != null ? `<div class="meta" title="Highest bid we saw ${label} before closing">${label} before: $${b.toLocaleString()}${b > 0 && a.sold ? ` <b>(${(a.sold / b).toFixed(1)}×)</b>` : ""}</div>` : "";

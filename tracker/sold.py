@@ -78,3 +78,26 @@ def update(page, seen: dict, path: Path, limit: int = 40, now: datetime | None =
     print(f"sold: checked {done} ended auctions, {max(0, len(todo) - limit)} still to check, "
           f"{sum(1 for r in sold.values() if r.get('final') is not None)} with final prices")
     return sold
+
+
+BID_BUCKETS = (0, 50, 150, 400)  # current-bid bands; low bids jump far more than high ones
+POINTS = (24, 8, 3, 1)
+
+
+def multipliers(sold: dict, min_n: int = 15) -> list[dict]:
+    """How final prices compare with the bid N hours before close, per bid band.
+
+    Returns rows {h, lo, hi, n, p25, med, p75} where hi is None for the top band.
+    """
+    import statistics
+    fin = [r for r in sold.values() if r.get("final")]
+    rows = []
+    for h in POINTS:
+        for i, lo in enumerate(BID_BUCKETS):
+            hi = BID_BUCKETS[i + 1] if i + 1 < len(BID_BUCKETS) else None
+            q = sorted(r["final"] / r[f"bid{h}"] for r in fin
+                       if r.get(f"bid{h}") and r[f"bid{h}"] >= lo and (hi is None or r[f"bid{h}"] < hi))
+            if len(q) >= min_n:
+                rows.append({"h": h, "lo": lo, "hi": hi, "n": len(q), "p25": round(q[len(q) // 4], 2),
+                             "med": round(statistics.median(q), 2), "p75": round(q[3 * len(q) // 4], 2)})
+    return rows
