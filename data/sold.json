@@ -26887,7 +26887,7 @@
  },
  "storagetreasures:6958191": {
   "address": null,
-  "checked": "2026-11-27T23:44+00:00",
+  "checked": "2026-11-28T00:45+00:00",
   "city": "Silverdale",
   "contents": "This unit appears to contain mattresses, suitcase, boxes, bags, clothing, knee rover, fan, laundry b...",
   "current_bid": 10.0,
@@ -26904,7 +26904,7 @@
   "source_id": "6958191",
   "state": "WA",
   "tags": [],
-  "tries": 2,
+  "tries": 3,
   "unit_size": "10 x 10",
   "url": "https://www.storagetreasures.com/auctions/wa/silverdale/6958191",
   "zip_code": null
@@ -27454,7 +27454,7 @@
  },
  "storagetreasures:6958503": {
   "address": null,
-  "checked": "2026-11-27T23:44+00:00",
+  "checked": "2026-11-28T00:45+00:00",
   "city": "Spanaway",
   "contents": "Wooden Jewelry Box, Wooden Dresser, Animal Cage, Ottoman, Luggage, Mirror, Fishing Pole, Rolling Clo...",
   "current_bid": 20.0,
@@ -27472,7 +27472,7 @@
    "jewelry",
    "fishing"
   ],
-  "tries": 2,
+  "tries": 3,
   "unit_size": "7 x 10",
   "url": "https://www.storagetreasures.com/auctions/wa/spanaway/6958503",
   "zip_code": null
@@ -50201,6 +50201,44 @@
   "tries": 1,
   "unit_size": "10 x 10",
   "url": "https://www.storagetreasures.com/auctions/wa/port%20angeles/6984630",
+  "zip_code": null
+ },
+ "storagetreasures:6984639": {
+  "address": null,
+  "bid1": 30.0,
+  "bid1_at": "2026-11-25T21:49+00:00",
+  "bid24": 30.0,
+  "bid24_at": "2026-11-25T21:49+00:00",
+  "bid3": 30.0,
+  "bid3_at": "2026-11-25T21:49+00:00",
+  "bid8": 30.0,
+  "bid8_at": "2026-11-25T21:49+00:00",
+  "checked": "2026-11-28T00:45+00:00",
+  "city": "Port Angeles",
+  "contents": "bags, boxes, totes",
+  "current_bid": 30.0,
+  "distance_mi": 90.2,
+  "ended": false,
+  "ends_at": "2026-11-27T23:30:00+00:00",
+  "facility": "Armor Storage - Port A...",
+  "final": 50.0,
+  "first_seen": "2026-11-20T05:36+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/7/6/4/9/9/thumb.jpg",
+  "lat": 48.0811,
+  "lon": -123.6781,
+  "nbids": 5,
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/7/6/4/9/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/7/6/5/0/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/7/6/5/0/1/giant.jpg"
+  ],
+  "source": "storagetreasures",
+  "source_id": "6984639",
+  "state": "WA",
+  "tags": [],
+  "tries": 1,
+  "unit_size": "10 x 5",
+  "url": "https://www.storagetreasures.com/auctions/wa/port%20angeles/6984639",
   "zip_code": null
  },
  "storagetreasures:6984765": {
