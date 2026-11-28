@@ -326,66 +326,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "7005825",
-  "url": "https://www.storagetreasures.com/auctions/wa/tacoma/7005825",
-  "facility": "Public Storage 08530 -...",
-  "city": "Tacoma",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 10",
-  "contents": "Hoverboard, furniture, Shelving, saw, TV, mattress, kids bed frame, bicycles",
-  "current_bid": 40.0,
-  "ends_at": "2026-11-28T02:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/2/4/8/7/0/thumb.jpg",
-  "lat": 47.2126,
-  "lon": -122.4658,
-  "distance_mi": 36.5,
-  "first_seen": "2026-11-25T20:48+00:00",
-  "tags": [
-   "furniture",
-   "tv"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/2/4/8/7/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/2/4/8/7/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/2/4/8/7/2/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/2/4/8/7/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/2/4/8/7/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/2/4/8/7/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/2/4/8/7/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/2/4/8/7/7/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
-  "source_id": "6971430",
-  "url": "https://www.storagetreasures.com/auctions/wa/kelso/6971430",
-  "facility": "Titan Self Storage (We...",
-  "city": "Kelso",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 15",
-  "contents": "Wheel barrow, boxes, foam pad, corrugated metal, ironing board",
-  "current_bid": 10.0,
-  "ends_at": "2026-11-28T02:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/8/2/8/6/9/thumb.jpg",
-  "lat": 46.1485,
-  "lon": -122.887,
-  "distance_mi": 108.8,
-  "first_seen": "2026-11-20T05:36+00:00",
-  "tags": [],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/8/2/8/6/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/8/2/8/7/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/8/2/8/7/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/8/2/8/7/2/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/8/2/8/7/3/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6999823",
   "url": "https://www.storagetreasures.com/auctions/wa/kent/6999823",
   "facility": "Private Seller - Kapat...",
@@ -498,7 +438,7 @@
   "address": null,
   "unit_size": "8 x 10",
   "contents": "Tables, Totes, Portable Heaters, Shelving, Books, Hearing protection",
-  "current_bid": 60.0,
+  "current_bid": 80.0,
   "ends_at": "2026-11-28T20:00:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/0/6/0/3/2/thumb.jpg",
   "lat": 47.2126,
@@ -611,38 +551,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6961634",
-  "url": "https://www.storagetreasures.com/auctions/wa/pacific/6961634",
-  "facility": "ABC Mini Storage - Pac...",
-  "city": "Pacific",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 27",
-  "contents": "Unit Appears to Contain: Upright piano, TV, wheelchair, bed frame, mattress, kitchen chair, lamp, ra...",
-  "current_bid": 10.0,
-  "ends_at": "2026-11-28T22:20:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/5/thumb.jpg",
-  "lat": 47.2666,
-  "lon": -122.2435,
-  "distance_mi": 26.6,
-  "first_seen": "2026-11-20T00:04+00:00",
-  "tags": [
-   "tv"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/2/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/2/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/2/2/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6961794",
   "url": "https://www.storagetreasures.com/auctions/wa/pacific/6961794",
   "facility": "ABC Mini Storage - Pac...",
@@ -678,6 +586,38 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/1/0/4/2/3/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/1/0/4/2/4/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/1/0/4/2/5/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6961634",
+  "url": "https://www.storagetreasures.com/auctions/wa/pacific/6961634",
+  "facility": "ABC Mini Storage - Pac...",
+  "city": "Pacific",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "10 x 27",
+  "contents": "Unit Appears to Contain: Upright piano, TV, wheelchair, bed frame, mattress, kitchen chair, lamp, ra...",
+  "current_bid": 10.0,
+  "ends_at": "2026-11-28T22:20:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/5/thumb.jpg",
+  "lat": 47.2666,
+  "lon": -122.2435,
+  "distance_mi": 26.6,
+  "first_seen": "2026-11-20T00:04+00:00",
+  "tags": [
+   "tv"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/1/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/2/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/2/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/9/2/2/2/giant.jpg"
   ]
  },
  {
@@ -783,7 +723,7 @@
   "address": null,
   "unit_size": "10 x 30",
   "contents": "Truck and skidoo are not included, lawnmower, patio furniture,coolers! Garden hose!, Boxes / Bags / ...",
-  "current_bid": 10.0,
+  "current_bid": 20.0,
   "ends_at": "2026-11-29T18:05:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/5/5/0/5/0/thumb.jpg",
   "lat": 47.2126,
@@ -835,33 +775,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "7006886",
-  "url": "https://www.storagetreasures.com/auctions/wa/burien/7006886",
-  "facility": "AAAA Mini Storage - Bu...",
-  "city": "Burien",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "5 x 8",
-  "contents": "saw, pull-up bar, office chair, tire, and tabletop saw",
-  "current_bid": 30.0,
-  "ends_at": "2026-11-30T18:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/3/thumb.jpg",
-  "lat": 47.4706,
-  "lon": -122.3403,
-  "distance_mi": 22.1,
-  "first_seen": "2026-11-26T03:46+00:00",
-  "tags": [],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/7/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6975069",
   "url": "https://www.storagetreasures.com/auctions/wa/covington/6975069",
   "facility": "Cubes Self Storage",
@@ -889,6 +802,89 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/0/7/4/8/5/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/0/7/4/8/6/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/0/7/4/8/7/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "7006886",
+  "url": "https://www.storagetreasures.com/auctions/wa/burien/7006886",
+  "facility": "AAAA Mini Storage - Bu...",
+  "city": "Burien",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "5 x 8",
+  "contents": "saw, pull-up bar, office chair, tire, and tabletop saw",
+  "current_bid": 30.0,
+  "ends_at": "2026-11-30T18:00:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/3/thumb.jpg",
+  "lat": 47.4706,
+  "lon": -122.3403,
+  "distance_mi": 22.1,
+  "first_seen": "2026-11-26T03:46+00:00",
+  "tags": [],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/7/0/3/2/6/5/7/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6953123",
+  "url": "https://www.storagetreasures.com/auctions/wa/battle%20ground/6953123",
+  "facility": "Hometown Self Storage",
+  "city": "Battle Ground",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "10 x 30",
+  "contents": "PVC tubing, boxes, commercial beverage equipment, metal ladder",
+  "current_bid": 60.0,
+  "ends_at": "2026-11-30T19:00:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/2/8/thumb.jpg",
+  "lat": 45.7907,
+  "lon": -122.5318,
+  "distance_mi": 126.5,
+  "first_seen": "2026-11-20T05:36+00:00",
+  "tags": [],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/2/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/2/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/4/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6992227",
+  "url": "https://www.storagetreasures.com/auctions/wa/auburn/6992227",
+  "facility": "Extra Space Storage #3...",
+  "city": "Auburn",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "5 x 10",
+  "contents": "tv, desk, chair, clothes",
+  "current_bid": 10.0,
+  "ends_at": "2026-11-30T19:00:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/1/1/thumb.jpg",
+  "lat": 47.3046,
+  "lon": -122.2379,
+  "distance_mi": 24.4,
+  "first_seen": "2026-11-21T21:47+00:00",
+  "tags": [
+   "tv"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/1/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/0/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/1/0/giant.jpg"
   ]
  },
  {
@@ -946,33 +942,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6992227",
-  "url": "https://www.storagetreasures.com/auctions/wa/auburn/6992227",
-  "facility": "Extra Space Storage #3...",
-  "city": "Auburn",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "5 x 10",
-  "contents": "tv, desk, chair, clothes",
-  "current_bid": 10.0,
-  "ends_at": "2026-11-30T19:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/1/1/thumb.jpg",
-  "lat": 47.3046,
-  "lon": -122.2379,
-  "distance_mi": 24.4,
-  "first_seen": "2026-11-21T21:47+00:00",
-  "tags": [
-   "tv"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/1/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/0/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/1/0/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6992231",
   "url": "https://www.storagetreasures.com/auctions/wa/auburn/6992231",
   "facility": "Extra Space Storage #3...",
@@ -1019,35 +988,6 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/3/2/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/3/4/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/7/3/5/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
-  "source_id": "6953123",
-  "url": "https://www.storagetreasures.com/auctions/wa/battle%20ground/6953123",
-  "facility": "Hometown Self Storage",
-  "city": "Battle Ground",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 30",
-  "contents": "PVC tubing, boxes, commercial beverage equipment, metal ladder",
-  "current_bid": 60.0,
-  "ends_at": "2026-11-30T19:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/2/8/thumb.jpg",
-  "lat": 45.7907,
-  "lon": -122.5318,
-  "distance_mi": 126.5,
-  "first_seen": "2026-11-20T05:36+00:00",
-  "tags": [],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/2/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/2/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/2/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/8/2/3/4/giant.jpg"
   ]
  },
  {
@@ -1199,6 +1139,34 @@
  },
  {
   "source": "storagetreasures",
+  "source_id": "6983032",
+  "url": "https://www.storagetreasures.com/auctions/wa/snohomish/6983032",
+  "facility": "Sound Storage of Snoho...",
+  "city": "Snohomish",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "5 x 5",
+  "contents": "Clothes on hangers, baseball style cap, shoes, basket, bags, small plastic storage bins, large plast...",
+  "current_bid": 120.0,
+  "ends_at": "2026-11-30T22:00:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/3/2/thumb.jpg",
+  "lat": 47.8876,
+  "lon": -122.0712,
+  "distance_mi": 23.6,
+  "first_seen": "2026-11-20T00:04+00:00",
+  "tags": [],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/3/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/3/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/3/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/4/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/4/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/5/0/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
   "source_id": "6961535",
   "url": "https://www.storagetreasures.com/auctions/wa/kent/6961535",
   "facility": "Totem Self Storage",
@@ -1226,34 +1194,6 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/8/3/6/0/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/8/3/6/1/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/0/8/3/6/9/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
-  "source_id": "6983032",
-  "url": "https://www.storagetreasures.com/auctions/wa/snohomish/6983032",
-  "facility": "Sound Storage of Snoho...",
-  "city": "Snohomish",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "5 x 5",
-  "contents": "Clothes on hangers, baseball style cap, shoes, basket, bags, small plastic storage bins, large plast...",
-  "current_bid": 120.0,
-  "ends_at": "2026-11-30T22:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/3/2/thumb.jpg",
-  "lat": 47.8876,
-  "lon": -122.0712,
-  "distance_mi": 23.6,
-  "first_seen": "2026-11-20T00:04+00:00",
-  "tags": [],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/3/2/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/3/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/3/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/4/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/4/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/5/2/5/0/giant.jpg"
   ]
  },
  {
@@ -1368,62 +1308,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6956028",
-  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6956028",
-  "facility": "Extra Space Storage #0...",
-  "city": "Vancouver",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "8 x 10",
-  "contents": "Totes, Bags, Tools, TV, Folding Chair, Mirror, Crystal Ware, Teacups, Vinyl's",
-  "current_bid": 90.0,
-  "ends_at": "2026-12-01T18:30:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/6/0/thumb.jpg",
-  "lat": 45.6544,
-  "lon": -122.6201,
-  "distance_mi": 136.7,
-  "first_seen": "2026-11-20T05:36+00:00",
-  "tags": [
-   "tools",
-   "tv"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/6/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/5/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/5/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/5/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/6/1/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
-  "source_id": "6952012",
-  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6952012",
-  "facility": "Extra Space Storage #8...",
-  "city": "Vancouver",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "5 x 5",
-  "contents": "Bedding, Purses, Shoes, Tote Bags, Boxes, Totes, Ladder",
-  "current_bid": 120.0,
-  "ends_at": "2026-12-01T18:30:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/1/7/thumb.jpg",
-  "lat": 45.6544,
-  "lon": -122.6201,
-  "distance_mi": 136.7,
-  "first_seen": "2026-11-20T05:36+00:00",
-  "tags": [],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/1/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/2/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/3/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/3/7/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6951990",
   "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6951990",
   "facility": "Extra Space Storage #8...",
@@ -1446,70 +1330,6 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/1/0/1/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/1/0/2/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/1/0/3/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
-  "source_id": "6989892",
-  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6989892",
-  "facility": "Extra Space Storage #8...",
-  "city": "Vancouver",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 15",
-  "contents": "Boxes, Totes, Furniture, Motorcycle Helmets, Pool Ladder, Workout Equipment, Tri Pod, Calico Critter...",
-  "current_bid": 60.0,
-  "ends_at": "2026-12-01T18:30:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/3/thumb.jpg",
-  "lat": 45.6544,
-  "lon": -122.6201,
-  "distance_mi": 136.7,
-  "first_seen": "2026-11-21T01:47+00:00",
-  "tags": [
-   "furniture",
-   "motorcycle"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/9/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
-  "source_id": "6923152",
-  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6923152",
-  "facility": "Extra Space Storage #0...",
-  "city": "Vancouver",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 30",
-  "contents": "Shoes, Dresser, monitor, purses, walker, shelving, AC units, bedframe, boxes, cooler, folding chair,...",
-  "current_bid": 10.0,
-  "ends_at": "2026-12-01T18:30:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/4/thumb.jpg",
-  "lat": 45.6544,
-  "lon": -122.6201,
-  "distance_mi": 136.7,
-  "first_seen": "2026-11-20T05:36+00:00",
-  "tags": [
-   "dresser"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/2/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/2/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/2/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/2/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/3/giant.jpg"
   ]
  },
  {
@@ -1548,28 +1368,122 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6989285",
-  "url": "https://www.storagetreasures.com/auctions/wa/kent/6989285",
-  "facility": "Extra Space Storage #8...",
-  "city": "Kent",
+  "source_id": "6923152",
+  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6923152",
+  "facility": "Extra Space Storage #0...",
+  "city": "Vancouver",
   "state": "WA",
   "zip_code": null,
   "address": null,
-  "unit_size": "10 x 10",
-  "contents": "Boxes, Bags, Totes, luggage, pot, clothes, speaker, religious statue",
+  "unit_size": "10 x 30",
+  "contents": "Shoes, Dresser, monitor, purses, walker, shelving, AC units, bedframe, boxes, cooler, folding chair,...",
   "current_bid": 10.0,
-  "ends_at": "2026-12-01T19:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/3/thumb.jpg",
-  "lat": 47.3813,
-  "lon": -122.2117,
-  "distance_mi": 19.8,
-  "first_seen": "2026-11-20T22:48+00:00",
+  "ends_at": "2026-12-01T18:30:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/4/thumb.jpg",
+  "lat": 45.6544,
+  "lon": -122.6201,
+  "distance_mi": 136.7,
+  "first_seen": "2026-11-20T05:36+00:00",
+  "tags": [
+   "dresser"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/2/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/2/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/2/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/4/3/3/2/3/3/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6989892",
+  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6989892",
+  "facility": "Extra Space Storage #8...",
+  "city": "Vancouver",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "10 x 15",
+  "contents": "Boxes, Totes, Furniture, Motorcycle Helmets, Pool Ladder, Workout Equipment, Tri Pod, Calico Critter...",
+  "current_bid": 60.0,
+  "ends_at": "2026-12-01T18:30:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/3/thumb.jpg",
+  "lat": 45.6544,
+  "lon": -122.6201,
+  "distance_mi": 136.7,
+  "first_seen": "2026-11-21T01:47+00:00",
+  "tags": [
+   "furniture",
+   "motorcycle"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/1/3/6/0/9/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6952012",
+  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6952012",
+  "facility": "Extra Space Storage #8...",
+  "city": "Vancouver",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "5 x 5",
+  "contents": "Bedding, Purses, Shoes, Tote Bags, Boxes, Totes, Ladder",
+  "current_bid": 120.0,
+  "ends_at": "2026-12-01T18:30:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/1/7/thumb.jpg",
+  "lat": 45.6544,
+  "lon": -122.6201,
+  "distance_mi": 136.7,
+  "first_seen": "2026-11-20T05:36+00:00",
   "tags": [],
   "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/2/giant.jpg"
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/1/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/2/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/3/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/4/0/2/3/7/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6956028",
+  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6956028",
+  "facility": "Extra Space Storage #0...",
+  "city": "Vancouver",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "8 x 10",
+  "contents": "Totes, Bags, Tools, TV, Folding Chair, Mirror, Crystal Ware, Teacups, Vinyl's",
+  "current_bid": 90.0,
+  "ends_at": "2026-12-01T18:30:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/6/0/thumb.jpg",
+  "lat": 45.6544,
+  "lon": -122.6201,
+  "distance_mi": 136.7,
+  "first_seen": "2026-11-20T05:36+00:00",
+  "tags": [
+   "tools",
+   "tv"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/6/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/5/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/5/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/5/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/6/6/8/2/6/1/giant.jpg"
   ]
  },
  {
@@ -1599,6 +1513,32 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/6/6/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/6/7/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/6/8/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6989285",
+  "url": "https://www.storagetreasures.com/auctions/wa/kent/6989285",
+  "facility": "Extra Space Storage #8...",
+  "city": "Kent",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "10 x 10",
+  "contents": "Boxes, Bags, Totes, luggage, pot, clothes, speaker, religious statue",
+  "current_bid": 10.0,
+  "ends_at": "2026-12-01T19:00:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/3/thumb.jpg",
+  "lat": 47.3813,
+  "lon": -122.2117,
+  "distance_mi": 19.8,
+  "first_seen": "2026-11-20T22:48+00:00",
+  "tags": [],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/9/4/7/2/giant.jpg"
   ]
  },
  {
@@ -1826,35 +1766,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6988234",
-  "url": "https://www.storagetreasures.com/auctions/wa/marysville/6988234",
-  "facility": "Freeway Storage",
-  "city": "Marysville",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "5 x 10",
-  "contents": "tv, tires, gas cans, Boxes.",
-  "current_bid": 10.0,
-  "ends_at": "2026-12-01T20:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/2/thumb.jpg",
-  "lat": 48.0811,
-  "lon": -122.1771,
-  "distance_mi": 37.9,
-  "first_seen": "2026-11-20T20:46+00:00",
-  "tags": [
-   "tv"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/2/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/6/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6987897",
   "url": "https://www.storagetreasures.com/auctions/wa/marysville/6987897",
   "facility": "Freeway Storage",
@@ -1887,6 +1798,35 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/9/9/2/6/5/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/9/9/2/6/6/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/9/9/2/6/7/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6988234",
+  "url": "https://www.storagetreasures.com/auctions/wa/marysville/6988234",
+  "facility": "Freeway Storage",
+  "city": "Marysville",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "5 x 10",
+  "contents": "tv, tires, gas cans, Boxes.",
+  "current_bid": 10.0,
+  "ends_at": "2026-12-01T20:00:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/2/thumb.jpg",
+  "lat": 48.0811,
+  "lon": -122.1771,
+  "distance_mi": 37.9,
+  "first_seen": "2026-11-20T20:46+00:00",
+  "tags": [
+   "tv"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/0/1/6/9/6/giant.jpg"
   ]
  },
  {
@@ -1960,7 +1900,7 @@
   "address": null,
   "unit_size": "5 x 5",
   "contents": "TV\nCookware\nLaundry Hamper\nReligious Sculptures\nBackpacks\nWall Mirror\nFamily Photos\nShoeboxes\nBoard ...",
-  "current_bid": 10.0,
+  "current_bid": 20.0,
   "ends_at": "2026-12-01T22:05:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/8/6/8/9/6/thumb.jpg",
   "lat": 47.2126,
@@ -2057,7 +1997,7 @@
   "address": null,
   "unit_size": "10 x 25",
   "contents": "Mannequin (Dressmakers)\nBoxes of items\nCouch\nGlass Panes\nCoffee Table\nMattress\nNightstands \nTable",
-  "current_bid": 60.0,
+  "current_bid": 110.0,
   "ends_at": "2026-12-01T22:30:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/8/7/5/2/8/thumb.jpg",
   "lat": 47.2126,
@@ -2335,6 +2275,38 @@
  },
  {
   "source": "storagetreasures",
+  "source_id": "6968127",
+  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6968127",
+  "facility": "Extra Space Storage #1...",
+  "city": "Vancouver",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "10 x 30",
+  "contents": "Bed, Walker, Couch, Dresser",
+  "current_bid": 10.0,
+  "ends_at": "2026-12-02T17:30:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/1/thumb.jpg",
+  "lat": 45.6544,
+  "lon": -122.6201,
+  "distance_mi": 136.7,
+  "first_seen": "2026-11-20T05:36+00:00",
+  "tags": [
+   "dresser"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/8/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
   "source_id": "6968129",
   "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6968129",
   "facility": "Extra Space Storage #1...",
@@ -2371,34 +2343,68 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6968127",
-  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6968127",
-  "facility": "Extra Space Storage #1...",
-  "city": "Vancouver",
+  "source_id": "6992803",
+  "url": "https://www.storagetreasures.com/auctions/wa/seattle/6992803",
+  "facility": "Extra Space Storage #3...",
+  "city": "Seattle",
   "state": "WA",
   "zip_code": null,
   "address": null,
-  "unit_size": "10 x 30",
-  "contents": "Bed, Walker, Couch, Dresser",
-  "current_bid": 10.0,
-  "ends_at": "2026-12-02T17:30:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/1/thumb.jpg",
-  "lat": 45.6544,
-  "lon": -122.6201,
-  "distance_mi": 136.7,
-  "first_seen": "2026-11-20T05:36+00:00",
+  "unit_size": "10 x 10",
+  "contents": "Rolling Forklift, Jack, Backpack Leaf Blower (x2), Bike, Table Saw, Keyboard, Audio Equipment, Dog C...",
+  "current_bid": 80.0,
+  "ends_at": "2026-12-02T18:00:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/9/thumb.jpg",
+  "lat": 47.5991,
+  "lon": -122.3322,
+  "distance_mi": 20.7,
+  "first_seen": "2026-11-21T23:47+00:00",
   "tags": [
-   "dresser"
+   "bike"
   ],
   "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/2/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/5/8/0/0/8/giant.jpg"
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/2/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6992804",
+  "url": "https://www.storagetreasures.com/auctions/wa/seattle/6992804",
+  "facility": "Extra Space Storage #3...",
+  "city": "Seattle",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "10 x 15",
+  "contents": "Tools, Tool cases, Boxes, Furniture, Vacuum",
+  "current_bid": 10.0,
+  "ends_at": "2026-12-02T18:00:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/3/thumb.jpg",
+  "lat": 47.5991,
+  "lon": -122.3322,
+  "distance_mi": 20.7,
+  "first_seen": "2026-11-21T23:47+00:00",
+  "tags": [
+   "tools",
+   "furniture"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/9/0/giant.jpg"
   ]
  },
  {
@@ -2460,72 +2466,6 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/3/0/0/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/3/0/1/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/3/0/2/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
-  "source_id": "6992804",
-  "url": "https://www.storagetreasures.com/auctions/wa/seattle/6992804",
-  "facility": "Extra Space Storage #3...",
-  "city": "Seattle",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 15",
-  "contents": "Tools, Tool cases, Boxes, Furniture, Vacuum",
-  "current_bid": 10.0,
-  "ends_at": "2026-12-02T18:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/3/thumb.jpg",
-  "lat": 47.5991,
-  "lon": -122.3322,
-  "distance_mi": 20.7,
-  "first_seen": "2026-11-21T23:47+00:00",
-  "tags": [
-   "tools",
-   "furniture"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/9/0/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
-  "source_id": "6992803",
-  "url": "https://www.storagetreasures.com/auctions/wa/seattle/6992803",
-  "facility": "Extra Space Storage #3...",
-  "city": "Seattle",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 10",
-  "contents": "Rolling Forklift, Jack, Backpack Leaf Blower (x2), Bike, Table Saw, Keyboard, Audio Equipment, Dog C...",
-  "current_bid": 80.0,
-  "ends_at": "2026-12-02T18:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/9/thumb.jpg",
-  "lat": 47.5991,
-  "lon": -122.3322,
-  "distance_mi": 20.7,
-  "first_seen": "2026-11-21T23:47+00:00",
-  "tags": [
-   "bike"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/7/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/2/8/2/giant.jpg"
   ]
  },
  {
@@ -2714,37 +2654,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6978100",
-  "url": "https://www.storagetreasures.com/auctions/wa/kent/6978100",
-  "facility": "East Valley Storage",
-  "city": "Kent",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 10",
-  "contents": "Vivosun grow tent, furniture, baby items, mattress, pillows, vacuum, pressure washer",
-  "current_bid": 10.0,
-  "ends_at": "2026-12-02T18:30:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/5/thumb.jpg",
-  "lat": 47.3813,
-  "lon": -122.2117,
-  "distance_mi": 19.8,
-  "first_seen": "2026-11-20T00:04+00:00",
-  "tags": [
-   "furniture",
-   "washer"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/5/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/6/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/7/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/6/0/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6944457",
   "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6944457",
   "facility": "Extra Space Storage #3...",
@@ -2800,6 +2709,37 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/8/6/0/9/4/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/8/6/0/9/5/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/5/8/6/0/9/6/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6978100",
+  "url": "https://www.storagetreasures.com/auctions/wa/kent/6978100",
+  "facility": "East Valley Storage",
+  "city": "Kent",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "10 x 10",
+  "contents": "Vivosun grow tent, furniture, baby items, mattress, pillows, vacuum, pressure washer",
+  "current_bid": 10.0,
+  "ends_at": "2026-12-02T18:30:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/5/thumb.jpg",
+  "lat": 47.3813,
+  "lon": -122.2117,
+  "distance_mi": 19.8,
+  "first_seen": "2026-11-20T00:04+00:00",
+  "tags": [
+   "furniture",
+   "washer"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/5/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/6/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/7/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/5/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/3/0/5/6/0/giant.jpg"
   ]
  },
  {
@@ -3601,36 +3541,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6968893",
-  "url": "https://www.storagetreasures.com/auctions/wa/centralia/6968893",
-  "facility": "Titan Self Storage (Re...",
-  "city": "Centralia",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 10",
-  "contents": "Step ladder, crates, lumber, books, boxes, extension cord, buckets, shelf",
-  "current_bid": 10.0,
-  "ends_at": "2026-12-04T02:00:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/7/8/thumb.jpg",
-  "lat": 46.7246,
-  "lon": -122.9671,
-  "distance_mi": 77.2,
-  "first_seen": "2026-11-20T05:36+00:00",
-  "tags": [],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/7/8/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/7/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/2/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/4/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/5/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6982874",
   "url": "https://www.storagetreasures.com/auctions/wa/centralia/6982874",
   "facility": "Titan Self Storage (Re...",
@@ -3661,6 +3571,36 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/4/1/5/3/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/4/1/5/4/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/8/6/4/1/5/5/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6968893",
+  "url": "https://www.storagetreasures.com/auctions/wa/centralia/6968893",
+  "facility": "Titan Self Storage (Re...",
+  "city": "Centralia",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "10 x 10",
+  "contents": "Step ladder, crates, lumber, books, boxes, extension cord, buckets, shelf",
+  "current_bid": 10.0,
+  "ends_at": "2026-12-04T02:00:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/7/8/thumb.jpg",
+  "lat": 46.7246,
+  "lon": -122.9671,
+  "distance_mi": 77.2,
+  "first_seen": "2026-11-20T05:36+00:00",
+  "tags": [],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/7/8/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/7/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/2/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/4/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/7/6/3/4/8/5/giant.jpg"
   ]
  },
  {
@@ -4294,7 +4234,7 @@
   "address": null,
   "unit_size": "5 x 8",
   "contents": "laptops, portable air conditioner, guitar case, boxes, rolling organizer, clothes, bags, haircare it...",
-  "current_bid": 10.0,
+  "current_bid": 90.0,
   "ends_at": "2026-12-04T19:05:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/0/0/8/4/thumb.jpg",
   "lat": 47.5991,
@@ -4473,7 +4413,7 @@
   "address": null,
   "unit_size": "10 x 5",
   "contents": "Totes, Tool boxes, tools, cooler, luggage, saw",
-  "current_bid": 50.0,
+  "current_bid": 70.0,
   "ends_at": "2026-12-05T20:00:00+00:00",
   "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/6/6/2/3/4/thumb.jpg",
   "lat": 47.2126,
@@ -5684,35 +5624,6 @@
  },
  {
   "source": "storagetreasures",
-  "source_id": "6992784",
-  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6992784",
-  "facility": "Extra Space Storage #3...",
-  "city": "Vancouver",
-  "state": "WA",
-  "zip_code": null,
-  "address": null,
-  "unit_size": "10 x 10",
-  "contents": "Clothing, tires, TV, dog crate, shoes, car radio, stuffed animals, suitcase, AC, cleaning stuff",
-  "current_bid": 10.0,
-  "ends_at": "2026-12-16T18:30:00+00:00",
-  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/3/thumb.jpg",
-  "lat": 45.6544,
-  "lon": -122.6201,
-  "distance_mi": 136.7,
-  "first_seen": "2026-11-21T23:47+00:00",
-  "tags": [
-   "tv"
-  ],
-  "photos": [
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/3/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/9/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/0/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/1/giant.jpg",
-   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/2/giant.jpg"
-  ]
- },
- {
-  "source": "storagetreasures",
   "source_id": "6992782",
   "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6992782",
   "facility": "Extra Space Storage #3...",
@@ -5764,6 +5675,35 @@
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/5/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/6/giant.jpg",
    "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/7/giant.jpg"
+  ]
+ },
+ {
+  "source": "storagetreasures",
+  "source_id": "6992784",
+  "url": "https://www.storagetreasures.com/auctions/wa/vancouver/6992784",
+  "facility": "Extra Space Storage #3...",
+  "city": "Vancouver",
+  "state": "WA",
+  "zip_code": null,
+  "address": null,
+  "unit_size": "10 x 10",
+  "contents": "Clothing, tires, TV, dog crate, shoes, car radio, stuffed animals, suitcase, AC, cleaning stuff",
+  "current_bid": 10.0,
+  "ends_at": "2026-12-16T18:30:00+00:00",
+  "image_url": "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/3/thumb.jpg",
+  "lat": 45.6544,
+  "lon": -122.6201,
+  "distance_mi": 136.7,
+  "first_seen": "2026-11-21T23:47+00:00",
+  "tags": [
+   "tv"
+  ],
+  "photos": [
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/3/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/3/9/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/0/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/1/giant.jpg",
+   "https://media.st-prd-1.aws.storagetreasures.com/data/auctions/images/4/6/9/3/4/1/4/2/giant.jpg"
   ]
  },
  {
